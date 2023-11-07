@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package com.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

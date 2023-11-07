@@ -1,7 +1,9 @@
-package Indigo.EECS4413Project;
+package com.auction;
 //random comment
 //Random
 import java.util.ArrayList;
+
+import com.user.User;
 
 //import com.user.User;
 

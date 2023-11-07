@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package com.user;
 
 public class Login extends User{
 //	public Login(String username, String password) {
