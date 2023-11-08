@@ -2,9 +2,6 @@ package com.auction;
 //random comment
 //Random
 import java.util.ArrayList;
-
-
-
 import com.user.User;
 
 //import com.user.User;
