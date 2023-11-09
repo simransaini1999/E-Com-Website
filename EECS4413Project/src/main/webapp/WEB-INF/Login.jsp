@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Sign-In</title>
+    <title>Sign-In Page</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -30,12 +30,13 @@
                             <p>To reset your password, please enter your email:</p>
                             <div class="form-group">
                                 <label class="control-label" for="email">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Your email">
+                                <input type="email" name="email" class="form-control" placeholder="Enter Your Email">
                             </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Login</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
+                            <a href="Register.jsp" class="btn btn-secondary">Register Instead</a>
                         </div>
                     </div>
                 </div>
