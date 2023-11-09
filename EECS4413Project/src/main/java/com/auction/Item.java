@@ -2,18 +2,18 @@ package com.auction;
 
 public class Item extends Auction{
 
-	private String itemName; 
+	private String itemName;
 	private String itemDescription;
 	private String auctionType;
 	private int currentPrice;
 	private int shipmentPrice;
-	
-	
+
+
 	public String getItemName() {
 		return itemName;
 	}
-	
-	
+
+
 	public String getItemDescription() {
 		return itemDescription;
 	}
@@ -40,8 +40,8 @@ public class Item extends Auction{
 	}
 	public void setShipmentPrice(int shipmentPrice) {
 		this.shipmentPrice = shipmentPrice;
-	} 
-	
-	
-	
+	}
+
+
+
 }
