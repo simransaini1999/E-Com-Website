@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.connection.DatabaseConnection;
 
-public class Signup extends User {
+public class SignupDAO extends User {
 
 //	public Signup(String email, String password, String username, String fName, String lName, String streetNumber,
 //			String streedName, String postalCode, String city, String country) {
@@ -18,7 +18,7 @@ public class Signup extends User {
 	//@Resource(name = "jdbc/Database_Name")
 
 
-	public Signup() {
+	public SignupDAO() {
 		super();
 	}
 
@@ -41,9 +41,9 @@ public class Signup extends User {
 			}
 			else {
 				System.out.println("Password cannot match username!!!");
-				//System is supposed to exit here.
+				throw new SQLException();
 			}
-			String query1 = "insert into userInfo (ID, fName, lName, email, streetNumber, streetName, postalCode, city, country) values (?,?,?,?,?,?,?,?,?)";
+			String query1 = "insert into users (ID, fName, lName, email, streetNumber, streetName, postalCode, city, country) values (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement  ps1 = con.prepareStatement(query1);
 			ps1.setString(2,fName);
 			ps1.setString(3,lName);
@@ -53,17 +53,13 @@ public class Signup extends User {
 			ps1.setString(7, postalCode);
 			ps1.setString(8, city);
 			ps1.setString(9, country);
+			ps1.setString(10, username);
+			ps1.setString(11,password);
 			ps1.execute();
-
-			String query2 = "insert into loginInfo (ID, username, password)";
-			PreparedStatement ps2 = con.prepareStatement(query2);
-			ps2.setString(2, username);
-			ps2.setString(3, password);
-			ps2.execute();
 
 			users.add(user);
 		} catch (SQLException e) {
-			System.out.println("Error in user/login database");
+			System.out.println("Error in signupDAO");
 		}
 	}
 
