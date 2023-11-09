@@ -9,35 +9,35 @@ import com.connection.DatabaseConnection;
 public class LoginDAO extends User{
 
 
-	public List<User> readAll(){
-		String query = "SELECT * FROM users";
-		List<User> users = new ArrayList<>(); 
-
-		try(Connection conn = DatabaseConnection.connect()){
-			PreparedStatement preparedStatement = conn.prepareStatement(query);
-			ResultSet resultSet = preparedStatement.executeQuery();
-
-			if(resultSet.next()) {
-				User user = new User();
-				user.setEmail(resultSet.getString("email"));
-				user.setPassword(resultSet.getString("password"));
-				user.setUsername(resultSet.getString("username"));
-				user.setfName(resultSet.getString("fName"));
-				user.setlName(resultSet.getString("lName"));
-				user.setStreetNumber(resultSet.getString("streetNumber"));
-				user.setStreedName(resultSet.getString("streedName"));
-				user.setPostalCode(resultSet.getString("postalCode"));
-				user.setCity(resultSet.getString("city"));
-				user.setCountry(resultSet.getString("country"));
-			}
-
-
-		}catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
-
-	}
+//	public List<User> readAll(){
+//		String query = "SELECT * FROM users";
+//		List<User> users = new ArrayList<>(); 
+//
+//		try(Connection conn = DatabaseConnection.connect()){
+//			PreparedStatement preparedStatement = conn.prepareStatement(query);
+//			ResultSet resultSet = preparedStatement.executeQuery();
+//
+//			if(resultSet.next()) {
+//				User user = new User();
+//				user.setEmail(resultSet.getString("email"));
+//				user.setPassword(resultSet.getString("password"));
+//				user.setUsername(resultSet.getString("username"));
+//				user.setfName(resultSet.getString("fName"));
+//				user.setlName(resultSet.getString("lName"));
+//				user.setStreetNumber(resultSet.getString("streetNumber"));
+//				user.setStreedName(resultSet.getString("streedName"));
+//				user.setPostalCode(resultSet.getString("postalCode"));
+//				user.setCity(resultSet.getString("city"));
+//				user.setCountry(resultSet.getString("country"));
+//			}
+//
+//
+//		}catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//		}
+//		return null;
+//
+//	}
 
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
 		String query = "SELECT password FROM users WHERE username = ?";
