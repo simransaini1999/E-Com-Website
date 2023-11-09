@@ -4,12 +4,12 @@ public class Payment {
 
 	int creditCarNumber;
 	String nameOnCard;
-	int expDate; 
+	int expDate;
 	int securityCode;
 	public int getCreditCarNumber() {
 		return creditCarNumber;
 	}
-	
+
 	public void setCreditCarNumber(int creditCarNumber) {
 		this.creditCarNumber = creditCarNumber;
 	}
@@ -22,7 +22,7 @@ public class Payment {
 	public void setSecurityCode(int securityCode) {
 		this.securityCode = securityCode;
 	}
-	
-	
-	
+
+
+
 }

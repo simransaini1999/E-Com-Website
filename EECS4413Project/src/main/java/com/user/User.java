@@ -1,7 +1,8 @@
 package com.user;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import jakarta.persistence.Entity;
 
+@Entity
 public class User {
 	private String email;
 	private String password;
@@ -13,8 +14,8 @@ public class User {
 	private String postalCode;
 	private String city;
 	private String country;
-	private AtomicInteger ID;
-	
+	private int ID;
+
 	public User() {}
 //	public User(String email, String password, String username, String fName, String lName, String streetNumber,
 //			String streedName, String postalCode, String city, String country) {
@@ -29,9 +30,9 @@ public class User {
 //		this.postalCode = postalCode;
 //		this.city = city;
 //		this.country = country;
-//	} 
-//	
-//	
+//	}
+//
+//
 //	public User(String username, String password) {
 //		this.username = username;
 //		this.password = password;
@@ -98,11 +99,8 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public AtomicInteger getID() {
+	public int getID() {
 		return ID;
 	}
-	public void setID() {
-		ID.incrementAndGet();
-	}
-	
+
 }
