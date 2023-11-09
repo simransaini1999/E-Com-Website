@@ -13,9 +13,12 @@ public class LoginDAO extends User{
 
 
 
+
 	public List<User> readAll(){
 		String query = "SELECT * FROM users";
 		List<User> users = new ArrayList<>();
+
+//later use
 
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -42,6 +45,7 @@ public class LoginDAO extends User{
 		return null;
 
 	}
+
 
 
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
