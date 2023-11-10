@@ -2,6 +2,7 @@ package com.auction;
 
 public class Item extends Auction{
 
+	private int itemID;
 	private String itemName;
 	private String itemDescription;
 	private String auctionType;
@@ -9,10 +10,12 @@ public class Item extends Auction{
 	private int shipmentPrice;
 
 
+	public int getItemID() {
+		return itemID;
+	}
 	public String getItemName() {
 		return itemName;
 	}
-
 
 	public String getItemDescription() {
 		return itemDescription;
@@ -20,11 +23,14 @@ public class Item extends Auction{
 	public String getAuctionType() {
 		return auctionType;
 	}
-	public double getCurrentPrice() {
+	public int getCurrentPrice() {
 		return currentPrice;
 	}
-	public double getShipmentPrice() {
+	public int getShipmentPrice() {
 		return shipmentPrice;
+	}
+	public void setItemID(int id) {
+		this.itemID = id;
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;

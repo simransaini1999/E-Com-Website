@@ -14,8 +14,6 @@ public class LoginDAO extends User{
 
 
 
-	
-
 
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
 		String query = "SELECT password FROM users WHERE username = ?";
