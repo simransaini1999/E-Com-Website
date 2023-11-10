@@ -14,15 +14,9 @@ public class LoginController {
 
 	private LoginDAO loginDAO = new LoginDAO();
 	
-//	@GET
-//	@Path("/allusers")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<User> getAllUsers(){
-//		return loginDAO.readAll(); 
-//	}
+	
 	
 	@GET
-	
 	@Produces(MediaType.APPLICATION_JSON)
 	public boolean authenticator(String username, String password) {
 		return loginDAO.read(username, password);
