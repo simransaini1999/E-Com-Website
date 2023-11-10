@@ -42,7 +42,7 @@ public class LoginDAO extends User{
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		return null;
+		return users;
 
 	}
 
