@@ -12,8 +12,11 @@ import com.connection.DatabaseConnection;
 public class LoginDAO extends User{
 
 
+<<<<<<< Upstream, based on origin/Harshil
 
 
+=======
+>>>>>>> 3a15d26 conflicts
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
 		String query = "SELECT password FROM users WHERE username = ?";
 		List<User> users = new ArrayList<>();
