@@ -9,7 +9,7 @@ import com.user.User;
 
 public class Auction {
 
-	private int price;
+	private int price = 0;;
 	User bidder;
 	private ArrayList<Item> items;
 	private Item item;

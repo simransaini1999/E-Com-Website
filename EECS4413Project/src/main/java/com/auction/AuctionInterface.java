@@ -5,7 +5,7 @@ import com.user.User;
 public interface AuctionInterface {
 	
 	public void changePrice(int price);
-	public void setBidder(User user);
+	public void settingBid(User user, int price);
 	public User getBidder();
 	
 }
