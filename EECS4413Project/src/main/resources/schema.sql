@@ -12,3 +12,12 @@ CREATE TABLE users (
 	password VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE items(
+	ID INTEGER AUTO_INCREMENT PRIMARY KEY,
+	ItemName VARCHAR(255) NOT NULL,
+	ItemDescription VARCHAR(255) NOT NULL,
+	AuctionType VARCHAR(255) NOT NULL,
+	CurrentPrice INTEGER,
+	ShipmentPrice INTEGER
+);
+
