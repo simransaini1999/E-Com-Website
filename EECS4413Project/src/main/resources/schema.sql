@@ -18,8 +18,7 @@ CREATE TABLE items(
 	ItemName VARCHAR(255) NOT NULL,
 	ItemDescription VARCHAR(255) NOT NULL,
 	AuctionType VARCHAR(255) NOT NULL,
-	CurrentPrice INTEGER,
-	ShipmentPrice INTEGER
+	StartingBidPrice INTEGER
 );
 
 

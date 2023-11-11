@@ -19,7 +19,7 @@ public class ItemDAO {
 				Item item = new Item();
 				item.setAuctionType(resultSet.getString("AuctionType"));
 				item.setItemName(resultSet.getString("ItemType"));
-				item.setCurrentPrice(resultSet.getInt("CurrentPrice"));
+				item.setStartingBidPrice(resultSet.getInt("StartingBidPrice"));
 				item.setItemDescription(resultSet.getString("ItemDescription"));
 				item.setShipmentPrice(resultSet.getInt("ShipmentPrice"));
 			}
@@ -45,7 +45,7 @@ public class ItemDAO {
 					item.setItemID(rs.getInt("ID"));
 					item.setAuctionType(rs.getString("AuctionType"));
 					item.setItemName(itemName);
-					item.setCurrentPrice(rs.getInt("CurrentPrice"));
+					item.setStartingBidPrice(rs.getInt("StartingBidPrice"));
 					item.setItemDescription(rs.getString("ItemDescription"));
 					item.setShipmentPrice(rs.getInt("ShipmentPrice"));
 				}
@@ -59,14 +59,14 @@ public class ItemDAO {
 
 
 	public void create(Item item) {
-		String query = "INSERT INTO items(ID,ItemName, ItemDescription, AuctionType, CurrentPrice, ShipmentPrice) VALUES (?,?,?,?,?,?)";
+		String query = "INSERT INTO items(ID,ItemName, ItemDescription, AuctionType, StartingBidPrice) VALUES (?,?,?,?,?)";
 		try (Connection conn = DatabaseConnection.connect();
 				PreparedStatement pstmt = conn.prepareStatement(query)) {
 			pstmt.setString(2, item.getItemName());
 			pstmt.setString(3, item.getItemDescription());
 			pstmt.setString(4, item.getAuctionType());
-			pstmt.setInt(5, item.getCurrentPrice());
-			pstmt.setInt(6, item.getShipmentPrice());
+			
+			pstmt.setInt(5, item.getStartingBidPrice());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

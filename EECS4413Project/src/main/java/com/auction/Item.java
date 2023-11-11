@@ -6,7 +6,7 @@ public class Item extends Auction{
 	private String itemName;
 	private String itemDescription;
 	private String auctionType;
-	private int currentPrice;
+	private int startingBidPrice;
 	private int shipmentPrice;
 
 
@@ -23,8 +23,8 @@ public class Item extends Auction{
 	public String getAuctionType() {
 		return auctionType;
 	}
-	public int getCurrentPrice() {
-		return currentPrice;
+	public int getStartingBidPrice() {
+		return startingBidPrice;
 	}
 	public int getShipmentPrice() {
 		return shipmentPrice;
@@ -41,8 +41,8 @@ public class Item extends Auction{
 	public void setAuctionType(String auctionType) {
 		this.auctionType = auctionType;
 	}
-	public void setCurrentPrice(int currentPrice) {
-		this.currentPrice = currentPrice;
+	public void setStartingBidPrice(int currentPrice) {
+		this.startingBidPrice = currentPrice;
 	}
 	public void setShipmentPrice(int shipmentPrice) {
 		this.shipmentPrice = shipmentPrice;
