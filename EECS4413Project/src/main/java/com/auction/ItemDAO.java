@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 import com.connection.DatabaseConnection;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'Harsimran' of https://github.com/simransaini1999/E-Com-Website.git
 public class ItemDAO {
 
 	public List<Item> readAll(){
