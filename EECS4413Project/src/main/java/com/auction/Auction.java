@@ -10,6 +10,18 @@ import com.user.User;
 public class Auction {
 
 	private int price;
+	User bidder;
+	private ArrayList<Item> items;
+	private Item item;
+	
+	public Item getItem() {
+		return item;
+	}
+	
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
 	public int getPrice() {
 		return price;
 	}
@@ -28,7 +40,6 @@ public class Auction {
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
 	}
-	User bidder;
-	private ArrayList<Item> items;
+
 
 }
