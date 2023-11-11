@@ -14,6 +14,11 @@ public class LoginDAO extends User{
 
 
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> branch 'Harsimran' of https://github.com/simransaini1999/E-Com-Website.git
 
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
 		String query = "SELECT password FROM users WHERE username = ?";
