@@ -29,21 +29,21 @@ public class ItemDAO {
 		return items;
 	}
 	
-	public Item read(int id) {
-		String query = "SELECT * FROM items WHERE ID = ?";
+	public Item read(String itemName) {
+		String query = "SELECT * FROM items WHERE ItemName = ?";
 		Item item = null;
 		
 		try(Connection conn = DatabaseConnection.connect()){
 			
 			PreparedStatement ps1 = conn.prepareStatement(query);
-			ps1.setInt(1, id);
+			ps1.setString(1, itemName);
 			try (ResultSet rs = ps1.executeQuery()) {
 				//Check if a result was returned
 				if (rs.next()) {
 					item = new Item();
-					item.setItemID(id);
+					item.setItemID(rs.getInt("ID"));
 					item.setAuctionType(rs.getString("AuctionType"));
-					item.setItemName(rs.getString("ItemName"));
+					item.setItemName(itemName);
 					item.setCurrentPrice(rs.getInt("CurrentPrice"));
 					item.setItemDescription(rs.getString("ItemDescription"));
 					item.setShipmentPrice(rs.getInt("ShipmentPrice"));
