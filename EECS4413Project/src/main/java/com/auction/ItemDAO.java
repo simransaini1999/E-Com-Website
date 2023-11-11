@@ -10,11 +10,11 @@ public class ItemDAO {
 	public List<Item> readAll(){
 		String query = "SELECT * FROM items";
 		List<Item> items = new ArrayList<>();
-		
+
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement ps1 = conn.prepareStatement(query);
 			ResultSet resultSet = ps1.executeQuery();
-			
+
 			if(resultSet.next()) {
 				Item item = new Item();
 				item.setAuctionType(resultSet.getString("AuctionType"));
@@ -29,13 +29,13 @@ public class ItemDAO {
 		}
 		return items;
 	}
-	
+
 	public Item read(String itemName) {
 		String query = "SELECT * FROM items WHERE ItemName = ?";
 		Item item = null;
-		
+
 		try(Connection conn = DatabaseConnection.connect()){
-			
+
 			PreparedStatement ps1 = conn.prepareStatement(query);
 			ps1.setString(1, itemName);
 			try (ResultSet rs = ps1.executeQuery()) {
@@ -49,15 +49,15 @@ public class ItemDAO {
 					item.setItemDescription(rs.getString("ItemDescription"));
 					item.setShipmentPrice(rs.getInt("ShipmentPrice"));
 				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-	} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
 		return item;
 	}
-	
-	
+
+
 	public void create(Item item) {
 		String query = "INSERT INTO items(ID,ItemName, ItemDescription, AuctionType, CurrentPrice, ShipmentPrice) VALUES (?,?,?,?,?,?)";
 		try (Connection conn = DatabaseConnection.connect();
@@ -72,4 +72,21 @@ public class ItemDAO {
 			System.out.println(e.getMessage());
 		}
 	}
+	public void remove(String itemName) {
+		String query = "Delete From items where ItemName = ?";
+		try (Connection conn = DatabaseConnection.connect();
+				PreparedStatement pstmt = conn.prepareStatement(query)) {
+			pstmt.setString(1, itemName);
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+
+
+
+
+	}
+
 }
