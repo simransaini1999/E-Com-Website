@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 import com.connection.DatabaseConnection;
-//
 public class ItemDAO {
 
 	public List<Item> readAll(){
