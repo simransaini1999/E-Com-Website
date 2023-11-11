@@ -19,6 +19,8 @@ CREATE TABLE items(
 	ItemDescription VARCHAR(255) NOT NULL,
 	AuctionType VARCHAR(255) NOT NULL,
 	StartingBidPrice INTEGER
+	ShipmentPrice INTEGER,
+	ExpeditedShipmentPrice INTEGER
 );
 
 

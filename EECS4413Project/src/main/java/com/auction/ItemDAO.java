@@ -59,14 +59,15 @@ public class ItemDAO {
 
 
 	public void create(Item item) {
-		String query = "INSERT INTO items(ID,ItemName, ItemDescription, AuctionType, StartingBidPrice) VALUES (?,?,?,?,?)";
+		String query = "INSERT INTO items(ID,ItemName, ItemDescription, AuctionType, StartingBidPrice, ShipmentPrice, ExpeditedShipmentPrice) VALUES (?,?,?,?,?,?,?)";
 		try (Connection conn = DatabaseConnection.connect();
 				PreparedStatement pstmt = conn.prepareStatement(query)) {
 			pstmt.setString(2, item.getItemName());
 			pstmt.setString(3, item.getItemDescription());
 			pstmt.setString(4, item.getAuctionType());
-			
 			pstmt.setInt(5, item.getStartingBidPrice());
+			pstmt.setInt(6, 25);
+			pstmt.setInt(7, 50);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
