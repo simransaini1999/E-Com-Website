@@ -11,8 +11,7 @@ CREATE TABLE users (
 	username VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL
 );
-<<<<<<< HEAD
-=======
+
 
 CREATE TABLE items(
 	ID INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -22,5 +21,5 @@ CREATE TABLE items(
 	CurrentPrice INTEGER,
 	ShipmentPrice INTEGER
 );
->>>>>>> branch 'Harsimran' of https://github.com/simransaini1999/E-Com-Website.git
+
 
