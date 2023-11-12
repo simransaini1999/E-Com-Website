@@ -1,6 +1,4 @@
-package com.auction;
-
-import com.user.User;
+package Indigo.EECS4413Project;
 
 public interface AuctionInterface {
 	

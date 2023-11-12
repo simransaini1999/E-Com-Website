@@ -1,4 +1,4 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-
-import com.connection.DatabaseConnection;
-import com.user.User;
 @Repository
 public class PaymentDAO {
 
@@ -33,13 +30,14 @@ public class PaymentDAO {
 				user.setPostalCode(resultSet.getString("postalCode"));
 				user.setCity(resultSet.getString("city"));
 				user.setCountry(resultSet.getString("country"));
+				users.add(user);
 			}
 
 
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		return null;
+		return users;
 
 	}
 

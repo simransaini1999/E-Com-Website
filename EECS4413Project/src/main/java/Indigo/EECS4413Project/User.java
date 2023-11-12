@@ -1,20 +1,46 @@
-package com.user;
+package Indigo.EECS4413Project;
 
+
+
+import jakarta.persistence.Access;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
 
 @Entity
+@Table(name="users")
 public class User {
+	
+	@Column
 	private String email;
+	@Column
 	private String password;
+	@Column
 	private String username;
+	@Column
 	private String fName;
+	@Column
 	private String lName;
+	@Column
 	private String streetNumber;
-	private String streedName;
+	@Column
+	private String streetName;
+	@Column
 	private String postalCode;
+	@Column
 	private String city;
+	@Column
 	private String country;
-	private int ID;
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
 
 	public User() {}
 //	public User(String email, String password, String username, String fName, String lName, String streetNumber,
@@ -76,10 +102,10 @@ public class User {
 		this.streetNumber = streetNumber;
 	}
 	public String getStreedName() {
-		return streedName;
+		return streetName;
 	}
 	public void setStreedName(String streedName) {
-		this.streedName = streedName;
+		this.streetName = streedName;
 	}
 	public String getPostalCode() {
 		return postalCode;
@@ -99,7 +125,7 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public int getID() {
+	public Long getID() {
 		return ID;
 	}
 

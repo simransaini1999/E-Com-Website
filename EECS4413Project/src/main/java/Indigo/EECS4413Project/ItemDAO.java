@@ -1,4 +1,4 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
-import com.connection.DatabaseConnection;
 @Repository
 public class ItemDAO {
 	Auction auction;

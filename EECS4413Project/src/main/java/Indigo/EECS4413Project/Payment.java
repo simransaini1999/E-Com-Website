@@ -1,4 +1,4 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
 public class Payment {
 

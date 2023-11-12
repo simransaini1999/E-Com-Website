@@ -1,4 +1,4 @@
-package com.user;
+package Indigo.EECS4413Project;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-
-import com.connection.DatabaseConnection;
 @Repository
 public class LoginDAO extends User{
 
@@ -19,8 +17,7 @@ public class LoginDAO extends User{
 
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
 		String query = "SELECT password FROM users WHERE username = ?";
-		List<User> users = new ArrayList<>();
-
+		
 		boolean result = false;
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -44,7 +41,7 @@ public class LoginDAO extends User{
 
 	public void update(String username, String password) {
 		String query = "UPDATE users SET password = ? WHERE username = ?";
-		List<User> users = new ArrayList<>();
+		
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1,password);

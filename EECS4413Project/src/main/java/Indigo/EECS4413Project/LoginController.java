@@ -1,4 +1,4 @@
-package com.user;
+package Indigo.EECS4413Project;
 
 import java.util.List;
 

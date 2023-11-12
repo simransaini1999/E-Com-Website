@@ -1,4 +1,4 @@
-package com.connection;
+package Indigo.EECS4413Project;
 
 
 import java.sql.Connection;

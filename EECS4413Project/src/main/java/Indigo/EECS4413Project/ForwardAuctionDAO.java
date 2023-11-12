@@ -1,8 +1,6 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
 import org.springframework.stereotype.Repository;
-
-import com.user.User;
 @Repository
 public class ForwardAuctionDAO extends Auction implements AuctionInterface {
 

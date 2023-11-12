@@ -1,4 +1,4 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

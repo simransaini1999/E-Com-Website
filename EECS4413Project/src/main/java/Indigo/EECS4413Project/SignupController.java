@@ -1,4 +1,4 @@
-package com.user;
+package Indigo.EECS4413Project;
 
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;

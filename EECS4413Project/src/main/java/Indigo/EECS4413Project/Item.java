@@ -1,17 +1,33 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
-public class Item extends Auction{
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-	private int itemID;
+@Entity
+@Table(name="items")
+public class Item {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int ID;
+	@Column
 	private String itemName;
+	@Column
 	private String itemDescription;
+	@Column
 	private String auctionType;
+	@Column
 	private int startingBidPrice;
+	@Column
 	private int shipmentPrice;
 
 
 	public int getItemID() {
-		return itemID;
+		return ID;
 	}
 	public String getItemName() {
 		return itemName;
@@ -30,7 +46,7 @@ public class Item extends Auction{
 		return shipmentPrice;
 	}
 	public void setItemID(int id) {
-		this.itemID = id;
+		this.ID = id;
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;

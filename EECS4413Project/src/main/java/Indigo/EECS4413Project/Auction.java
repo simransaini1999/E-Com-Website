@@ -1,8 +1,6 @@
-package com.auction;
+package Indigo.EECS4413Project;
 
 import java.util.ArrayList;
-
-import com.user.User;
 
 public class Auction {
 
