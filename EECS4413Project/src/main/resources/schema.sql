@@ -13,14 +13,15 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE items(
-	ID INTEGER AUTO_INCREMENT PRIMARY KEY,
-	ItemName VARCHAR(255) NOT NULL,
-	ItemDescription VARCHAR(255) NOT NULL,
-	AuctionType VARCHAR(255) NOT NULL,
-	StartingBidPrice INTEGER
-	ShipmentPrice INTEGER,
-	ExpeditedShipmentPrice INTEGER
+CREATE TABLE items (
+    ID INTEGER AUTO_INCREMENT PRIMARY KEY,
+    ItemName VARCHAR(255) NOT NULL,
+    ItemDescription VARCHAR(255) NOT NULL,
+    AuctionType VARCHAR(255) NOT NULL,
+    StartingBidPrice INTEGER,
+    ShipmentPrice INTEGER,  -- Added comma here
+    ExpeditedShipmentPrice INTEGER
 );
+
 
 
