@@ -18,7 +18,7 @@ public class AuctionController {
 	private AuctionDAO auctionDAO = new AuctionDAO(); 
 
 
-	@PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	@PostMapping("/")
 	@ResponseBody
 	public Auction startauction(HttpSession session) {
 		return auctionDAO.start(session);

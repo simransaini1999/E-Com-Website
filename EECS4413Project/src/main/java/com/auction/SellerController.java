@@ -17,7 +17,7 @@ public class SellerController {
 	 @Autowired
 	private ItemDAO itemDAO = new ItemDAO();
 	
-	 @PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	 @PostMapping("/")
 	public void createItem(@RequestBody Item item) {
 		itemDAO.create(item);
 	}

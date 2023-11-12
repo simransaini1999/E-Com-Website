@@ -2,9 +2,13 @@ package com.auction;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
+
 import java.sql.*;
 import com.connection.DatabaseConnection;
 
+@Component
 public class ItemDAO {
 	Auction auction;
 	Item item;

@@ -19,7 +19,7 @@ public class PaymentController {
 	@Autowired
 	private PaymentDAO paymentDAO = new PaymentDAO(); 
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON)
+	@GetMapping("/")
 	public List<User> getAllUsers(){
 		return paymentDAO.readAll(); 
 	}

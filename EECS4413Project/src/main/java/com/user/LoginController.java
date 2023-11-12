@@ -24,15 +24,14 @@ public class LoginController {
 	private LoginDAO loginDAO = new LoginDAO();
 	
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON)
+	@GetMapping("/")
 	public boolean authenticator(@RequestParam String username,@RequestParam String password) {
 		return loginDAO.read(username, password);
 	
 	}
 	
 	@PutMapping("/forgotpassword")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    
 	public void updateForgotPassword(@RequestParam String username, @RequestParam String password) {
 		loginDAO.update(username, password);
 	}

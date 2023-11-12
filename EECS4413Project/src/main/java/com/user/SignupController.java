@@ -18,7 +18,7 @@ public class SignupController {
 	@Autowired
 	private SignupDAO signupDAO = new SignupDAO();
 
-	@PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	@PostMapping("/")
 	@ResponseBody
 	public void createBook(String email, String password, String username,String fName, String lName,String streetNumber, String streetName,String postalCode, String city,String country) {
 		signupDAO.create(email,password,username,fName,lName,streetNumber,streetName,postalCode,city,country);
