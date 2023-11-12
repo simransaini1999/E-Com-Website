@@ -1,6 +1,9 @@
 package com.auction;
 
 import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.user.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -13,7 +16,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/item")
+@RequestMapping("/item")
 public class ItemController  {
 	private ItemDAO itemDAO = new ItemDAO(); 
 
