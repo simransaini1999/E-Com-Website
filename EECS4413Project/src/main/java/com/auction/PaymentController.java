@@ -2,20 +2,24 @@ package com.auction;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.user.User;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/payment")
+@RestController
+@RequestMapping("/payment")
 public class PaymentController {
 	
+	@Autowired
 	private PaymentDAO paymentDAO = new PaymentDAO(); 
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@GetMapping(produces = MediaType.APPLICATION_JSON)
 	public List<User> getAllUsers(){
 		return paymentDAO.readAll(); 
 	}

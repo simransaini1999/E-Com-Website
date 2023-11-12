@@ -2,7 +2,14 @@ package com.auction;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.user.User;
 
@@ -16,42 +23,39 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
+@RestController
 @RequestMapping("/item")
 public class ItemController  {
+
+	@Autowired
 	private ItemDAO itemDAO = new ItemDAO(); 
 
-	@Path("/createitem")
-	@POST
+	@PostMapping("/createitem")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void createItem(Item item) {
+	public void createItem(@RequestBody Item item) {
 		itemDAO.create(item);
 	}
 
-	@Path("/removeitem")
-	@DELETE
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public void removeItem(String itemName) {
+	@DeleteMapping("/removeitem")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public void removeItem(@RequestParam String itemName) {
 		itemDAO.remove(itemName);
 	}
 
-	@Path("/allitems")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@GetMapping("/allitems")
+    @Produces(MediaType.APPLICATION_JSON)
 	public List<Item> getreadAll(){
 		return itemDAO.readAll(); 
 	}
 
-	@GET 
-	//@Path("/itemname")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Item getitem(String itemName,HttpSession session) {
+	@GetMapping
+    @Produces(MediaType.APPLICATION_JSON)
+	public Item getitem(@RequestParam String itemName,HttpSession session) {
 		session.setAttribute("ItemName", itemName);
 		return itemDAO.read(itemName);
 	}
-
-
 
 
 }

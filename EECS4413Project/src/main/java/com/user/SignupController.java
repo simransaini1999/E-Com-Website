@@ -1,18 +1,26 @@
 package com.user;
-import jakarta.ws.rs.*;
+
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Path("/signup")
+@RestController
+@RequestMapping("/signup")
 public class SignupController {
+	@Autowired
 	private SignupDAO signupDAO = new SignupDAO();
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public void createBook(String email, String password, String username, String fName, String lName, String streetNumber,	String streetName, String postalCode, String city, String country) {
-	signupDAO.create(email,password,username,fName,lName,streetNumber,streetName,postalCode,city,country);
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	@ResponseBody
+	public void createBook(String email, String password, String username,String fName, String lName,String streetNumber, String streetName,String postalCode, String city,String country) {
+		signupDAO.create(email,password,username,fName,lName,streetNumber,streetName,postalCode,city,country);
 	}
 }
