@@ -1,6 +1,8 @@
 package com.auction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.user.User;
 
@@ -16,6 +18,17 @@ public class DutchAuctionDAO extends Auction implements AuctionInterface{
 		this.item = item;
 	}
 
+	public Map<User, Integer> multipleReturnTypeMethod() {
+		Map<User, Integer> result = new HashMap<>();
+
+		User user = this.getBidder();
+		int price = this.getPrice();
+
+		result.put(bidder, price);
+
+		return result;
+	}
+
 	public void startDutchAuction(int itemIndex, int startingPrice, int decrementAmount, int reservePrice) {
 
 		Item item = this.getItem();
@@ -25,7 +38,7 @@ public class DutchAuctionDAO extends Auction implements AuctionInterface{
 			System.out.println("Current Price: " + currentPrice);
 			try {
 
-				Thread.sleep(10000); // Sleep for 10 second (for example)
+				Thread.sleep(10000); // Sleep for 10 second
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

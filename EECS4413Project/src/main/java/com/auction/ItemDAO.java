@@ -88,20 +88,5 @@ public class ItemDAO {
 		}
 	}
 		
-		public Auction start(String itemName) {
-			
-			item.setItem(read(itemName));
-			
-			
-			if(item.getAuctionType().equals("Dutch Auction")) {
-				auction = new DutchAuctionDAO();	
-			}
-			else {
-				auction = new ForwardAuctionDAO();
-			}
-			auction.setItem(item);
-			return auction;
-
-	}
 
 }

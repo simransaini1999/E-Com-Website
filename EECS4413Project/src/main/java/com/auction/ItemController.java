@@ -3,6 +3,7 @@ package com.auction;
 import java.util.List;
 import com.user.User;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -42,17 +43,11 @@ public class ItemController  {
 	@GET 
 	//@Path("/itemname")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Item getitem(String itemName) {
-
+	public Item getitem(String itemName,HttpSession session) {
+		session.setAttribute("ItemName", itemName);
 		return itemDAO.read(itemName);
 	}
-	@GET 
-	//@Path("/auctionname")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Auction startAuction(String itemName) {
-		return itemDAO.start(itemName);
 
-	}
 
 
 
