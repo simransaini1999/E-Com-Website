@@ -2,26 +2,22 @@ package Indigo.EECS4413Project;
 
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 public class DatabaseConnection {
 	public static Connection connect() {
 		Connection conn = null;
+		String url = "jdbc:h2:mem:h2db";
+		String username = "sa";
+		String password = "";
 		try {
-			// Obtain our environment naming context
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			// Look up our data source
-			DataSource ds = (DataSource) envCtx.lookup("jdbc/EECS");
-			// Allocate and use a connection from the pool
-			conn = ds.getConnection();
-		} catch (SQLException | NamingException e) {
-			System.out.println(e.getMessage());
+			conn = DriverManager.getConnection(url, username, password);			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+
 		return conn;
 	}
 }
