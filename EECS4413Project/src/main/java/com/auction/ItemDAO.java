@@ -6,10 +6,13 @@ import java.sql.*;
 import com.connection.DatabaseConnection;
 
 public class ItemDAO {
-
+	Auction auction;
+	Item item;
+	
 	public List<Item> readAll(){
 		String query = "SELECT * FROM items";
 		List<Item> items = new ArrayList<>();
+	
 
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement ps1 = conn.prepareStatement(query);
@@ -83,10 +86,21 @@ public class ItemDAO {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-
-
-
-
+	}
+		
+		public Auction start(String itemName) {
+			
+			item.setItem(read(itemName));
+			
+			
+			if(item.getAuctionType().equals("Dutch Auction")) {
+				auction = new DutchAuctionDAO();	
+			}
+			else {
+				auction = new ForwardAuctionDAO();
+			}
+			auction.setItem(item);
+			return auction;
 
 	}
 

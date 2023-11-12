@@ -1,15 +1,12 @@
 package com.auction;
-//random comment
-//Random
+
 import java.util.ArrayList;
 
 import com.user.User;
 
-//import com.user.User;
-
 public class Auction {
 
-	private int price = 0;;
+	private int price = 0;
 	User bidder;
 	private ArrayList<Item> items;
 	private Item item;

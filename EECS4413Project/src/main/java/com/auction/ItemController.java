@@ -15,36 +15,45 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/item")
 public class ItemController  {
 	private ItemDAO itemDAO = new ItemDAO(); 
-	
+
 	@Path("/createitem")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void createItem(Item item) {
-	itemDAO.create(item);
+		itemDAO.create(item);
 	}
 
-	
 	@Path("/removeitem")
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void removeItem(String itemName) {
-	itemDAO.remove(itemName);
+		itemDAO.remove(itemName);
 	}
-	
+
 	@Path("/allitems")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Item> getreadAll(){
 		return itemDAO.readAll(); 
 	}
-	
+
 	@GET 
-	@Path("/itemname")
+	//@Path("/itemname")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Item getitem(String itemName) {
+
 		return itemDAO.read(itemName);
 	}
-	
+	@GET 
+	//@Path("/auctionname")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Auction startAuction(String itemName) {
+		return itemDAO.start(itemName);
+
+	}
+
+
+
 }
