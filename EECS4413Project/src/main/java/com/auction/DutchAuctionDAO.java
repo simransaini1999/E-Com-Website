@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.user.User;
+import org.springframework.stereotype.Repository;
 
+import com.user.User;
+@Repository
 public class DutchAuctionDAO extends Auction implements AuctionInterface{
 
 	private Item item;

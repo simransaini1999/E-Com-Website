@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.connection.DatabaseConnection;
 import com.user.User;
-
+@Repository
 public class PaymentDAO {
 
 	public List<User> readAll(){

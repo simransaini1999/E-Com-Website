@@ -1,7 +1,10 @@
 package com.auction;
 
+import org.springframework.stereotype.Repository;
+
 import jakarta.servlet.http.HttpSession;
 
+@Repository
 public class AuctionDAO {
 	
 	Auction auction;
