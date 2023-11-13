@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.sql.*;
 
 @Service
-//@DependsOn("session")
+
 public class ItemDAO  {
 	
 	@Autowired
