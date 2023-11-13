@@ -74,7 +74,7 @@ public class Item {
 		return expeditedShipmentPrice;
 	}
 	public void setExpeditedShipmentPrice(int expeditedShipmentPrice) {
-		expeditedShipmentPrice = expeditedShipmentPrice;
+		this.expeditedShipmentPrice = expeditedShipmentPrice;
 	}
 
 

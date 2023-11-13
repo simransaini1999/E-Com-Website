@@ -2,6 +2,8 @@ package Indigo.EECS4413Project;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -9,7 +11,10 @@ import java.sql.*;
 public class ItemDAO  {
 	Auction auction;
 	Item item;
+	
+	@Autowired
 	ItemRepository itemrepo;
+	
 
 	public List<Item> readAll(){
 		String query = "SELECT * FROM items";
@@ -65,6 +70,16 @@ public class ItemDAO  {
 	}
 
 	public void create(Item item) {
+		Item item1 = new Item();
+		item1.setItemName(item.getItemName());
+		item1.setItemDescription(item.getItemDescription());
+		item1.setAuctionType(item.getAuctionType());
+		item1.setStartingBidPrice(item.getStartingBidPrice());
+		item1.setShipmentPrice(item.getShipmentPrice());
+		item1.setExpeditedShipmentPrice(item.getExpeditedShipmentPrice());
+		
+		
+		
 //		String query = "INSERT INTO items(itemName, itemDescription, auctionType, startingBidPrice, shipmentPrice, expeditedShipmentPrice) VALUES (?,?,?,?,?,?)";
 //		try (Connection conn = DatabaseConnection.connect();
 //				PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -78,7 +93,9 @@ public class ItemDAO  {
 //		} catch (SQLException e) {
 //			System.out.println(e.getMessage());
 //		}
-		itemrepo.save(item);
+		
+		itemrepo.save(item1);
+		
 	}
 	public void remove(String itemName) {
 		String query = "Delete From items where ItemName = ?";
