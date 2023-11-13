@@ -27,13 +27,6 @@ public class LoginController {
 
 	}
 
-
-
-	@PatchMapping(value = "/{username}/update-password",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<String> updatePassword(@PathVariable String username, @RequestParam String newPassword) {
-
-	
-
 	@PatchMapping(value = "/{username}/{newPassword}",produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<String> updatePassword(@PathVariable String username, @PathVariable String newPassword) {
 
