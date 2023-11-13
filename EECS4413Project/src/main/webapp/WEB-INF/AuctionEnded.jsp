@@ -35,9 +35,9 @@
                 </tr>
             </tbody>
         </table>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Buy Now</button>
-            </div>
+            <div class="btn-group">
+            <a href="Payment.jsp" class="btn btn-primary">Buy Now</a>
+        </div>
         </form>
     </div>
 
