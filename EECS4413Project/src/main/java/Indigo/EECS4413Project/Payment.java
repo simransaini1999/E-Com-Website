@@ -23,6 +23,4 @@ public class Payment {
 		this.securityCode = securityCode;
 	}
 
-
-
 }

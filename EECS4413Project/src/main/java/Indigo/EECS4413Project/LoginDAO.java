@@ -4,20 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.springframework.stereotype.Repository;
 @Repository
 public class LoginDAO extends User{
-
-
-
-
+	UserRepository userrepo;
 
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
 		String query = "SELECT password FROM users WHERE username = ?";
-		
+
 		boolean result = false;
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -41,7 +37,7 @@ public class LoginDAO extends User{
 
 	public void update(String username, String password) {
 		String query = "UPDATE users SET password = ? WHERE username = ?";
-		
+
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1,password);

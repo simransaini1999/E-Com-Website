@@ -2,20 +2,19 @@ package Indigo.EECS4413Project;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 @Repository
-public class ItemDAO {
+public class ItemDAO  {
 	Auction auction;
 	Item item;
-	
+	ItemRepository itemrepo;
+
 	public List<Item> readAll(){
 		String query = "SELECT * FROM items";
 		List<Item> items = new ArrayList<>();
-	
+
 
 		try(Connection conn = DatabaseConnection.connect()){
 			PreparedStatement ps1 = conn.prepareStatement(query);
@@ -33,7 +32,6 @@ public class ItemDAO {
 				items.add(item);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return items;
@@ -60,27 +58,27 @@ public class ItemDAO {
 				}
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		return item;
 	}
 
-
 	public void create(Item item) {
-		String query = "INSERT INTO items(itemName, itemDescription, auctionType, startingBidPrice, shipmentPrice, expeditedShipmentPrice) VALUES (?,?,?,?,?,?)";
-		try (Connection conn = DatabaseConnection.connect();
-				PreparedStatement pstmt = conn.prepareStatement(query)) {
-			pstmt.setString(2, item.getItemName());
-			pstmt.setString(3, item.getItemDescription());
-			pstmt.setString(4, item.getAuctionType());
-			pstmt.setInt(5, item.getStartingBidPrice());
-			pstmt.setInt(6, item.getShipmentPrice());
-			pstmt.setInt(7, item.getExpeditedShipmentPrice());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+//		String query = "INSERT INTO items(itemName, itemDescription, auctionType, startingBidPrice, shipmentPrice, expeditedShipmentPrice) VALUES (?,?,?,?,?,?)";
+//		try (Connection conn = DatabaseConnection.connect();
+//				PreparedStatement pstmt = conn.prepareStatement(query)) {
+//			pstmt.setString(2, item.getItemName());
+//			pstmt.setString(3, item.getItemDescription());
+//			pstmt.setString(4, item.getAuctionType());
+//			pstmt.setInt(5, item.getStartingBidPrice());
+//			pstmt.setInt(6, item.getShipmentPrice());
+//			pstmt.setInt(7, item.getExpeditedShipmentPrice());
+//			pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//		}
+		itemrepo.save(item);
 	}
 	public void remove(String itemName) {
 		String query = "Delete From items where ItemName = ?";
@@ -93,6 +91,6 @@ public class ItemDAO {
 			System.out.println(e.getMessage());
 		}
 	}
-		
+
 
 }

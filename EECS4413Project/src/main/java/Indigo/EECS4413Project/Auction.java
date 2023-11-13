@@ -8,15 +8,15 @@ public class Auction {
 	User bidder;
 	private ArrayList<Item> items;
 	private Item item;
-	
+
 	public Item getItem() {
 		return item;
 	}
-	
+
 	public void setItem(Item item) {
 		this.item = item;
 	}
-	
+
 	public int getPrice() {
 		return price;
 	}

@@ -9,14 +9,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 @Repository
 public class SignupDAO extends User {
-
-//	public Signup(String email, String password, String username, String fName, String lName, String streetNumber,
-//			String streedName, String postalCode, String city, String country) {
-//		super(email, password, username, fName, lName, streetNumber, streedName, postalCode, city, country);
-//	}
-
-	//@Resource(name = "jdbc/Database_Name")
-
+	UserRepository userrepo;
 
 	public SignupDAO() {
 		super();
@@ -62,16 +55,6 @@ public class SignupDAO extends User {
 			System.out.println("Error in signupDAO");
 		}
 	}
-
-//	public DataSource createConnection() {
-//		DataSource dataSource = new DataSource();
-//		dataSource.setURL("jdbc:mysql://localhost:3306/myDatabase");
-//        dataSource.setUser("root");
-//        dataSource.setPassword("s3cr3t");
-//        return dataSource;
-//	}
-
-
 
 
 }
