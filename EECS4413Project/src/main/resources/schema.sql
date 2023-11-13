@@ -15,12 +15,12 @@ CREATE TABLE users (
 
 CREATE TABLE items (
     ID INTEGER AUTO_INCREMENT PRIMARY KEY,
-    ItemName VARCHAR(255) NOT NULL,
-    ItemDescription VARCHAR(255) NOT NULL,
-    AuctionType VARCHAR(255) NOT NULL,
-    StartingBidPrice INTEGER,
-    ShipmentPrice INTEGER,  -- Added comma here
-    ExpeditedShipmentPrice INTEGER
+    itemName VARCHAR(255) NOT NULL,
+    itemDescription VARCHAR(255) NOT NULL,
+    auctionType VARCHAR(255) NOT NULL,
+    startingBidPrice INTEGER,
+    shipmentPrice INTEGER,  
+    expeditedShipmentPrice INTEGER
 );
 
 

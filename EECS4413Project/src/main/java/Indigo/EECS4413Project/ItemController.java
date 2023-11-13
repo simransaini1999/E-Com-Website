@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.ws.rs.core.MediaType;
 
 @RestController
 @RequestMapping("/item")
@@ -15,7 +16,7 @@ public class ItemController {
     @Autowired
     private ItemDAO itemDAO; 
 
-    @PostMapping("/createitem")
+    @PostMapping(value = "/createitem",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
     public void createItem(@RequestBody Item item) {
         itemDAO.create(item);
     }
@@ -25,7 +26,7 @@ public class ItemController {
         itemDAO.remove(itemName);
     }
 
-    @GetMapping("/allitems")
+    @GetMapping(value = "/allitems",produces = MediaType.APPLICATION_JSON)
     public List<Item> getReadAll() {
         return itemDAO.readAll();
     }

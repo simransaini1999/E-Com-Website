@@ -14,16 +14,23 @@ public class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
-	@Column
+	@Column(name = "itemName")
 	private String itemName;
-	@Column
+	
+	@Column(name = "itemDescription")
 	private String itemDescription;
-	@Column
+	
+	@Column(name = "auctionType")
 	private String auctionType;
-	@Column
+	
+	@Column(name = "startingBidPrice")
 	private int startingBidPrice;
-	@Column
+	
+	@Column(name = "shipmentPrice")
 	private int shipmentPrice;
+	
+	@Column(name = "expeditedShipmentPrice")
+	private int expeditedShipmentPrice;
 
 
 	public int getItemID() {
@@ -62,6 +69,12 @@ public class Item {
 	}
 	public void setShipmentPrice(int shipmentPrice) {
 		this.shipmentPrice = shipmentPrice;
+	}
+	public int getExpeditedShipmentPrice() {
+		return expeditedShipmentPrice;
+	}
+	public void setExpeditedShipmentPrice(int expeditedShipmentPrice) {
+		expeditedShipmentPrice = expeditedShipmentPrice;
 	}
 
 
