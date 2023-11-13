@@ -29,17 +29,18 @@ public class LoginDAO extends User{
 	}
 
 	public void update(String username, String password) {
-		String query = "UPDATE users SET password = ? WHERE username = ?";
-
-		try(Connection conn = DatabaseConnection.connect()){
-			PreparedStatement preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1,password);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
-		}
-		catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+//		String query = "UPDATE users SET password = ? WHERE username = ?";
+//
+//		try(Connection conn = DatabaseConnection.connect()){
+//			PreparedStatement preparedStatement = conn.prepareStatement(query);
+//			preparedStatement.setString(1,password);
+//			preparedStatement.setString(2, username);
+//			preparedStatement.executeUpdate();
+//		}
+//		catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//		}
+		userrepo.update(username,password); 
 	}
 }
 

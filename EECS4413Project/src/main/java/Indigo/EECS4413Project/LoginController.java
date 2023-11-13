@@ -1,12 +1,17 @@
 package Indigo.EECS4413Project;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.ws.rs.core.MediaType;
 
 
 @RestController
@@ -16,15 +21,22 @@ public class LoginController {
 	@Autowired
 	private LoginDAO loginDAO = new LoginDAO();
 
-	@GetMapping("/{username}/{password}")
+	@GetMapping(value = "/{username}/{password}",produces = MediaType.APPLICATION_JSON)
 	public boolean authenticator(@PathVariable String username,@PathVariable String password) {
 		return loginDAO.read(username, password);
 
 	}
 
-	@PutMapping("/forgotpassword")
-	public void updateForgotPassword(@RequestParam String username, @RequestParam String password) {
-		loginDAO.update(username, password);
-	}
 
+	
+
+	@PatchMapping(value = "/{username}/update-password",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
+    public ResponseEntity<String> updatePassword(@PathVariable String username, @RequestParam String newPassword) {
+        try {
+            loginDAO.update(username, newPassword);
+            return ResponseEntity.ok("Password updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating password.");
+        }
+    }
 }
