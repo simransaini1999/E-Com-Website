@@ -18,8 +18,7 @@ public class AuctionDAO {
 	@Autowired
 	ItemDAO itemDAO;
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	
 
 	public Auction start(HttpSession session) {
@@ -29,12 +28,11 @@ public class AuctionDAO {
 		Item item = itemDAO.getItemByName(itemName);
 	}
 
-=======
-=======
->>>>>>> refs/remotes/origin/Harsimran
+
+
 	@Autowired
 	Auction auction;
->>>>>>> refs/remotes/origin/Harsimran
+
 	public Auction start() {
 
 
