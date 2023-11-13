@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Service
-//@DependsOn("session")
 public class ItemDAO  {
 	
 	@Autowired
