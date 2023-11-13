@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.core.MediaType;
 
 @RestController
@@ -21,8 +22,9 @@ public class ItemController {
 		itemDAO.create(item);
 	}
 
-	@DeleteMapping("/removeitem")
-	public void removeItem(@RequestParam String itemName) {
+	@Transactional
+	@DeleteMapping(value = "/removeitem/{itemName}",produces = MediaType.APPLICATION_JSON)
+	public void removeItem(@PathVariable String itemName) {
 		itemDAO.remove(itemName);
 	}
 
@@ -31,8 +33,8 @@ public class ItemController {
 		return itemDAO.readAll();
 	}
 
-	@GetMapping("/getitem")
-	public Item getItem(@RequestParam String itemName, HttpSession session) {
+	@GetMapping(value = "/getitem/{itemName}",produces = MediaType.APPLICATION_JSON)
+	public Item getItem(@PathVariable String itemName, HttpSession session) {
 		session.setAttribute("ItemName", itemName);
 		return itemDAO.read(itemName);
 	}

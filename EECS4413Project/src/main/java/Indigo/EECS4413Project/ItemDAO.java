@@ -17,56 +17,13 @@ public class ItemDAO  {
 	
 
 	public List<Item> readAll(){
-		String query = "SELECT * FROM items";
-		List<Item> items = new ArrayList<>();
 
-
-		try(Connection conn = DatabaseConnection.connect()){
-			PreparedStatement ps1 = conn.prepareStatement(query);
-			ResultSet resultSet = ps1.executeQuery();
-
-			if(resultSet.next()) {
-				Item item = new Item();
-				item.setItemID(resultSet.getInt("ID"));
-				item.setAuctionType(resultSet.getString("auction_Type"));
-				item.setItemName(resultSet.getString("item_Name"));
-				item.setStartingBidPrice(resultSet.getInt("starting_Bid_Price"));
-				item.setItemDescription(resultSet.getString("item_Description"));
-				item.setShipmentPrice(resultSet.getInt("shipment_Price"));
-				item.setExpeditedShipmentPrice(resultSet.getInt("expedited_Shipment_Price"));
-				items.add(item);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return items;
+		return itemrepo.findAll();
 	}
 
 	public Item read(String itemName) {
-		String query = "SELECT * FROM items WHERE ItemName = ?";
-		Item item = null;
-
-		try(Connection conn = DatabaseConnection.connect()){
-
-			PreparedStatement ps1 = conn.prepareStatement(query);
-			ps1.setString(1, itemName);
-			try (ResultSet rs = ps1.executeQuery()) {
-				
-				if (rs.next()) {
-					item = new Item();
-					item.setItemID(rs.getInt("ID"));
-					item.setAuctionType(rs.getString("AuctionType"));
-					item.setItemName(itemName);
-					item.setStartingBidPrice(rs.getInt("StartingBidPrice"));
-					item.setItemDescription(rs.getString("ItemDescription"));
-					item.setShipmentPrice(rs.getInt("ShipmentPrice"));
-				}
-			}
-		} catch (SQLException e1) {
-
-			e1.printStackTrace();
-		}
-		return item;
+		
+		return itemrepo.findByItemName(itemName);
 	}
 
 	public void create(Item item) {
@@ -82,16 +39,8 @@ public class ItemDAO  {
 		
 	}
 	public void remove(String itemName) {
-		String query = "Delete From items where ItemName = ?";
-		try (Connection conn = DatabaseConnection.connect();
-				PreparedStatement pstmt = conn.prepareStatement(query)) {
-			pstmt.setString(1, itemName);
-			pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-	}
+        itemrepo.deleteByItemName(itemName);
+    }
 
 
 }
