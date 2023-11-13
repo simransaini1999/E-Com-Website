@@ -2,6 +2,7 @@ package Indigo.EECS4413Project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +16,8 @@ public class LoginController {
 	@Autowired
 	private LoginDAO loginDAO = new LoginDAO();
 
-	@GetMapping("/")
-	public boolean authenticator(@RequestParam String username,@RequestParam String password) {
+	@GetMapping("/{username}/{password}")
+	public boolean authenticator(@PathVariable String username,@PathVariable String password) {
 		return loginDAO.read(username, password);
 
 	}

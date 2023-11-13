@@ -13,10 +13,10 @@ public class SignupDAO extends User {
 	@Autowired
 	UserRepository userrepo;
 
-	public SignupDAO() {
-		super();
-	}
-	public void create(User user) throws SQLException {
+//	public SignupDAO() {
+//		super();
+//	}
+	public void create(User user) {
 
 		User user1 = new User();
 		user1.setID(user.getID());
@@ -30,14 +30,16 @@ public class SignupDAO extends User {
 		user1.setStreetNumber(user.getStreetNumber());
 		user1.setUsername(user.getUsername());
 		
-		if(!(user.getUsername().equals(user.getPassword()))) {
-			user1.setPassword(getPassword());
-		}
-		else {
-			System.out.println("Password cannot match username!!!");
-			throw new SQLException();
-		}
+//		if(!(user.getUsername().equals(user.getPassword()))) {
+			user1.setPassword(user.getPassword());
+//			
+//		}
+//		else {
+//			System.out.println("Password cannot match username!!!");
+//			
+//		}
 		userrepo.save(user1);
+		
 	} 
 }
 

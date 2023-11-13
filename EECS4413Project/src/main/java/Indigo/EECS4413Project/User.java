@@ -12,30 +12,41 @@ import jakarta.persistence.Table;
 @Table(name="users")
 public class User {
 	
-	@Column
-	private String email;
-	@Column
-	private String password;
-	@Column
-	private String username;
-	@Column
-	private String fName;
-	@Column
-	private String lName;
-	@Column
-	private String streetNumber;
-	@Column
-	private String streetName;
-	@Column
-	private String postalCode;
-	@Column
-	private String city;
-	@Column
-	private String country;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "password")
+	private String password;
+	
+	@Column(name = "username")
+	private String username;
+	
+	@Column(name = "fName")
+	private String fName;
+	
+	@Column(name = "lName")
+	private String lName;
+	
+	@Column(name = "streetNumber")
+	private String streetNumber;
+	
+	@Column(name = "streetName")
+	private String streetName;
+	
+	@Column(name = "postalCode")
+	private String postalCode;
+	
+	@Column(name = "city")
+	private String city;
+	
+	@Column(name = "country")
+	private String country;
+	
+	
 
 	public User() {}
 
