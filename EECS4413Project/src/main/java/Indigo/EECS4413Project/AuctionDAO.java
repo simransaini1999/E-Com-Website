@@ -34,10 +34,6 @@ public class AuctionDAO {
 
 	}
 	
-//	public void endAuction(Auction auction) {
-//        
-//        auction.processPayment(auction.getItem(), auction.getBidder().getUsername(), auction.getItem() ,auction.getPrice());
-//    
-	//}
+
 
 }
