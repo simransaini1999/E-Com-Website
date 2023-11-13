@@ -15,7 +15,6 @@ public class AuctionController {
 	@Autowired
 	private AuctionDAO auctionDAO = new AuctionDAO(); 
 
-
 	@PostMapping("/")
 	@ResponseBody
 	public Auction startauction(HttpSession session) {

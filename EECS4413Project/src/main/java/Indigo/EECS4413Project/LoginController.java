@@ -1,7 +1,5 @@
 package Indigo.EECS4413Project;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,7 +25,5 @@ public class LoginController {
 	public void updateForgotPassword(@RequestParam String username, @RequestParam String password) {
 		loginDAO.update(username, password);
 	}
-
-
 
 }

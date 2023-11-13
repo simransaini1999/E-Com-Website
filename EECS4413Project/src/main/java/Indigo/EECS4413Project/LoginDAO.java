@@ -5,32 +5,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 @Repository
 public class LoginDAO extends User{
+	@Autowired
 	UserRepository userrepo;
 
+
 	public boolean read(String username, String password){ // getting the username and password from front end form and authenticating
-		String query = "SELECT password FROM users WHERE username = ?";
-
-		boolean result = false;
-		try(Connection conn = DatabaseConnection.connect()){
-			PreparedStatement preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setString(1,username);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			resultSet.next();
-
-			if(resultSet.getString(1).equals(password)) {
-				result  = true;
-			}else {
-				result = false;
-			}
 
 
-		}catch (SQLException e) {
-			System.out.println(e.getMessage());
+		boolean result;
+		String dbPass = userrepo.findbyUsername(username);
+		if(dbPass.equals(password)) {
+			result  = true;
+		}else {
+			result = false;
 		}
+
 		return result;
 
 	}

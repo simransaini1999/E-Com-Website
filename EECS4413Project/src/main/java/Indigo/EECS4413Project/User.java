@@ -1,14 +1,11 @@
 package Indigo.EECS4413Project;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 
 
 @Entity
@@ -36,13 +33,11 @@ public class User {
 	@Column
 	private String country;
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private int ID;
 
 	public User() {}
-
 
 	public String getEmail() {
 		return email;
@@ -104,8 +99,11 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public Long getID() {
+	public int getID() {
 		return ID;
 	}
-
+	public void setID(int Id) {
+		this.ID=Id;
+	}
+	
 }

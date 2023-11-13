@@ -19,6 +19,7 @@ public class SignupDAO extends User {
 	public void create(User user) throws SQLException {
 
 		User user1 = new User();
+		user1.setID(user.getID());
 		user1.setCity(user.getCity());
 		user1.setCountry(user.getCountry());
 		user1.setEmail(user.getEmail());
@@ -28,9 +29,9 @@ public class SignupDAO extends User {
 		user1.setStreetName(user.getStreetName());
 		user1.setStreetNumber(user.getStreetNumber());
 		user1.setUsername(user.getUsername());
-
+		
 		if(!(user.getUsername().equals(user.getPassword()))) {
-			user.setPassword(user.getPassword());
+			user1.setPassword(getPassword());
 		}
 		else {
 			System.out.println("Password cannot match username!!!");
