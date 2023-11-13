@@ -23,8 +23,9 @@ public class AuctionDAO {
 	public Auction start(HttpSession session) {
 		ItemDAO itemDAO = new ItemDAO();
 
-		String itemName = (String) session.getAttribute("ItemName");
-		Item item = itemDAO.read(itemName);
+		String itemName = (String) session.getAttribute("itemName");
+		Item item = itemDAO.getItemByName(itemName);
+	}
 
 	public Auction start() {
 
