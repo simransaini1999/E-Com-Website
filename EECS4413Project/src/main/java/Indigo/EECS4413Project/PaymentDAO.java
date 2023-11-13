@@ -14,9 +14,10 @@ public class PaymentDAO {
 	@Autowired
 	UserRepository userrepo;
 
-	public User read(int id){
+	
+	
+	public User getUserbyId( int id) {
 		return userrepo.findByID(id);
-
 	}
 
 }

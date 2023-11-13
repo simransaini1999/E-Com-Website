@@ -18,7 +18,7 @@ public class PaymentController {
 
 	@GetMapping("/{id}")
 	public User getAllUsers(@PathVariable int id){
-		return paymentDAO.read(id); 
+		return paymentDAO.getUserbyId(id); 
 	}
 
 }

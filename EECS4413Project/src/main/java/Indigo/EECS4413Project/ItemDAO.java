@@ -4,20 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Repository;
+
+import jakarta.servlet.http.HttpSession;
 
 import java.sql.*;
 @Repository
+//@DependsOn("session")
 public class ItemDAO  {
 	Auction auction;
 	Item item;
 
 	@Autowired
+	HttpSession session;
+	
+	@Autowired
 	ItemRepository itemrepo;
 	public List<Item> readAll(){
 		return itemrepo.findAll();
 	}
+	
 	public Item read(String itemName) {
+		session.setAttribute("itemName", itemName);
 		return itemrepo.findByItemName(itemName);
 	}
 	public void create(Item item) {
