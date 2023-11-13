@@ -15,7 +15,7 @@ public class AuctionDAO {
 	@Autowired
 	ItemDAO itemDAO;
 	
-	
+	@Autowired
 	Auction auction;
 	public Auction start() {
 
