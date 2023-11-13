@@ -36,7 +36,6 @@ public class Auction {
 		this.items = items;
 	}
 
-	
 
 
 }

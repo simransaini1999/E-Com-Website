@@ -34,9 +34,14 @@ public class ItemController {
 	}
 
 	@GetMapping(value = "/getitem/{itemName}",produces = MediaType.APPLICATION_JSON)
-	public Item getItem(@PathVariable String itemName, HttpSession session) {
-		session.setAttribute("ItemName", itemName);
-		return itemDAO.read(itemName);
+	public Item getItem(@PathVariable String itemName) {
+		return itemDAO.getItemByName(itemName);
 	}
+	
+	@PostMapping(value = "/selectItem/{itemName}", produces = MediaType.APPLICATION_JSON)
+	public void chooseItem(@PathVariable String itemName) {
+		itemDAO.selectItem(itemName);
+	}
+	
 }
 

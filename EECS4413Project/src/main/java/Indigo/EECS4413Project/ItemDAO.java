@@ -5,29 +5,31 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
 
 import java.sql.*;
-@Repository
+
+@Service
 //@DependsOn("session")
 public class ItemDAO  {
-	Auction auction;
-	Item item;
-
+	
 	@Autowired
 	HttpSession session;
 	
 	@Autowired
 	ItemRepository itemrepo;
+	
 	public List<Item> readAll(){
 		return itemrepo.findAll();
 	}
 	
-	public Item read(String itemName) {
+	public void selectItem(String itemName) {
 		session.setAttribute("itemName", itemName);
-		return itemrepo.findByItemName(itemName);
+		
 	}
 	public void create(Item item) {
 		Item item1 = new Item();
@@ -40,6 +42,9 @@ public class ItemDAO  {
 
 		itemrepo.save(item1);
 
+	}
+	public Item getItemByName(String itemName) {
+		return itemrepo.findByItemName(itemName);
 	}
 	public void remove(String itemName) {
 		itemrepo.deleteByItemName(itemName);
