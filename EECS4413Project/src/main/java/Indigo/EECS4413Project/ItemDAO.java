@@ -51,7 +51,7 @@ public class ItemDAO  {
 			PreparedStatement ps1 = conn.prepareStatement(query);
 			ps1.setString(1, itemName);
 			try (ResultSet rs = ps1.executeQuery()) {
-				//Check if a result was returned
+				
 				if (rs.next()) {
 					item = new Item();
 					item.setItemID(rs.getInt("ID"));
@@ -77,23 +77,7 @@ public class ItemDAO  {
 		item1.setStartingBidPrice(item.getStartingBidPrice());
 		item1.setShipmentPrice(item.getShipmentPrice());
 		item1.setExpeditedShipmentPrice(item.getExpeditedShipmentPrice());
-		
-		
-		
-//		String query = "INSERT INTO items(itemName, itemDescription, auctionType, startingBidPrice, shipmentPrice, expeditedShipmentPrice) VALUES (?,?,?,?,?,?)";
-//		try (Connection conn = DatabaseConnection.connect();
-//				PreparedStatement pstmt = conn.prepareStatement(query)) {
-//			pstmt.setString(2, item.getItemName());
-//			pstmt.setString(3, item.getItemDescription());
-//			pstmt.setString(4, item.getAuctionType());
-//			pstmt.setInt(5, item.getStartingBidPrice());
-//			pstmt.setInt(6, item.getShipmentPrice());
-//			pstmt.setInt(7, item.getExpeditedShipmentPrice());
-//			pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			System.out.println(e.getMessage());
-//		}
-		
+				
 		itemrepo.save(item1);
 		
 	}

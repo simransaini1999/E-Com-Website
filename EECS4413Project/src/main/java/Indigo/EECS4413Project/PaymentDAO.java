@@ -26,7 +26,7 @@ public class PaymentDAO {
 				user.setfName(resultSet.getString("fName"));
 				user.setlName(resultSet.getString("lName"));
 				user.setStreetNumber(resultSet.getString("streetNumber"));
-				user.setStreedName(resultSet.getString("streedName"));
+				user.setStreetName(resultSet.getString("streetName"));
 				user.setPostalCode(resultSet.getString("postalCode"));
 				user.setCity(resultSet.getString("city"));
 				user.setCountry(resultSet.getString("country"));

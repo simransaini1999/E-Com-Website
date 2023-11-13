@@ -42,26 +42,6 @@ public class User {
     private Long ID;
 
 	public User() {}
-//	public User(String email, String password, String username, String fName, String lName, String streetNumber,
-//			String streedName, String postalCode, String city, String country) {
-//		super();
-//		this.email = email;
-//		this.password = password;
-//		this.username = username;
-//		this.fName = fName;
-//		this.lName = lName;
-//		this.streetNumber = streetNumber;
-//		this.streedName = streedName;
-//		this.postalCode = postalCode;
-//		this.city = city;
-//		this.country = country;
-//	}
-//
-//
-//	public User(String username, String password) {
-//		this.username = username;
-//		this.password = password;
-//	}
 
 
 	public String getEmail() {
@@ -100,10 +80,10 @@ public class User {
 	public void setStreetNumber(String streetNumber) {
 		this.streetNumber = streetNumber;
 	}
-	public String getStreedName() {
+	public String getStreetName() {
 		return streetName;
 	}
-	public void setStreedName(String streedName) {
+	public void setStreetName(String streedName) {
 		this.streetName = streedName;
 	}
 	public String getPostalCode() {
