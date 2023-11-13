@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import jakarta.servlet.http.HttpSession;
 
 @Repository
-public class AuctionDAO {
+public class AuctionDAO  {
 
 	Auction auction;
 	public Auction start(HttpSession session) {
