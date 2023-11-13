@@ -21,14 +21,6 @@ public class AuctionDAO {
 
 	
 
-	public Auction start(HttpSession session) {
-		ItemDAO itemDAO = new ItemDAO();
-
-		String itemName = (String) session.getAttribute("itemName");
-		Item item = itemDAO.getItemByName(itemName);
-	}
-
-
 
 	@Autowired
 	Auction auction;
