@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.PathParam;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
@@ -17,7 +18,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	@Modifying
     @Transactional
-    @Query("UPDATE User u SET u.password = :password WHERE u.username = :username")
-	void update(String username, String password);
+	@Query(value = "UPDATE users SET password = :password WHERE username = :username", nativeQuery = true)
+	void update(@PathParam("username") String username, @PathParam("passowrd") String password);
 
 }
+
+
+//UPDATE users SET password = ? WHERE username = ?

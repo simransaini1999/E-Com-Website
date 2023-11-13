@@ -30,10 +30,11 @@ public class LoginController {
 
 	
 
-	@PatchMapping(value = "/{username}/update-password",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<String> updatePassword(@PathVariable String username, @RequestParam String newPassword) {
+	@PatchMapping(value = "/{username}/{newPassword}",produces = MediaType.APPLICATION_JSON)
+    public ResponseEntity<String> updatePassword(@PathVariable String username, @PathVariable String newPassword) {
         try {
             loginDAO.update(username, newPassword);
+            System.out.println(username + newPassword);
             return ResponseEntity.ok("Password updated successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating password.");
