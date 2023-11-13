@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
 
+
+
+
 @Service
 public class AuctionDAO {
 
@@ -15,13 +18,19 @@ public class AuctionDAO {
 	@Autowired
 	ItemDAO itemDAO;
 	
+
+	
+
+
 	@Autowired
 	Auction auction;
+
 	public Auction start() {
 
 
 		String itemName = (String) session.getAttribute("itemName");
 		Item item = itemDAO.getItemByName(itemName);
+
 
 		if(item.getAuctionType().equals("Dutch Auction")) {
 			auction = new DutchAuctionDAO();	
@@ -33,10 +42,5 @@ public class AuctionDAO {
 		return auction;
 
 	}
-	
-//	public void endAuction(Auction auction) {
-//        
-//        auction.processPayment(auction.getItem(), auction.getBidder().getUsername(), auction.getItem() ,auction.getPrice());
-//    }
 
 }

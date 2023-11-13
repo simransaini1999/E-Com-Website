@@ -1,6 +1,6 @@
 package Indigo.EECS4413Project;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
 
-import java.sql.*;
 
 @Service
 //@DependsOn("session")
