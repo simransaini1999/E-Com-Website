@@ -1,12 +1,12 @@
 package Indigo.EECS4413Project;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+
 @Repository
 public class ItemDAO  {
 	Auction auction;

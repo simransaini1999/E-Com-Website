@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,8 +27,6 @@ public class LoginController {
 
 	}
 
-
-	
 
 	@PatchMapping(value = "/{username}/update-password",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<String> updatePassword(@PathVariable String username, @RequestParam String newPassword) {
