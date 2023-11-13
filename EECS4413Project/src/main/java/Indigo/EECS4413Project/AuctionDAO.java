@@ -19,6 +19,7 @@ public class AuctionDAO {
 	ItemDAO itemDAO;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 
 	public Auction start(HttpSession session) {
@@ -29,6 +30,8 @@ public class AuctionDAO {
 	}
 
 =======
+=======
+>>>>>>> refs/remotes/origin/Harsimran
 	@Autowired
 	Auction auction;
 >>>>>>> refs/remotes/origin/Harsimran
