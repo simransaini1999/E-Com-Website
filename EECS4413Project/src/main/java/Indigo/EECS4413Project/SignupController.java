@@ -27,7 +27,7 @@ public class SignupController {
 
 	@PostMapping(value = "/createuser",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
 //	@ResponseBody
-	public void createuser(User user)  {
+	public void createuser(@RequestBody User user)  {
 		signupDAO.create(user);
 	}
 }
