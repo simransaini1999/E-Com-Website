@@ -38,14 +38,6 @@ public class AuctionDAO {
 		return auction;
 
 	}
-<<<<<<< HEAD
-=======
-	
-//	public void endAuction(Auction auction) {
-//        
-//        auction.processPayment(auction.getItem(), auction.getBidder().getUsername(), auction.getItem() ,auction.getPrice());
-//    
-	//}
->>>>>>> refs/remotes/origin/Harsimran
+
 
 }
