@@ -34,9 +34,25 @@ get_All_items , delete_items ,updateUser
 
 **URL path parameter that can be edited to get the output as followed**
 
-1- /signup/createuser/  edit JSON body
+1- /signup/createuser/                         (Edit JSON body)
 
-2- /seller/createitem/itemcontroller/    edit JSON body
+2- /seller/createitem/itemcontroller/          (Edit JSON body)
+
+3- /login/{username}/{password}
+
+4- /item/getitem/{itemName}
+
+5- item/selecitem/{itemName}
+
+6- /auction/itemdetails
+
+7- auction/dutchauction/{id}/{bidAmount}
+
+8- auction/forwardauction/{id}/{bidAmount}
+
+9- /payement/dutchauction
+
+10- /payement/forwardauction
 
 
 
