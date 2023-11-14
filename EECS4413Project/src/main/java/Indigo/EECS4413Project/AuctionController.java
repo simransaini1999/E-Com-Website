@@ -17,28 +17,29 @@ import jakarta.ws.rs.core.MediaType;
 @RequestMapping("/auction")
 public class AuctionController {
 	@Autowired
-	private AuctionDAO auctionDAO = new AuctionDAO(); 
-	
-	@Autowired
-	private Auction auction;
-	
-	@Autowired
-	private DutchAuctionDAO dutchAuctionDAO;
+	private AuctionDAO auctionDAO; 
 
-	@GetMapping(value = "/start",produces = MediaType.APPLICATION_JSON)
+
+
+	@GetMapping(value = "/itemdetails",produces = MediaType.APPLICATION_JSON)
 	@ResponseBody
-	public Auction startauction() {
-		auction = auctionDAO.start();
-		System.out.println(auction.getItem().getItemName());
-		return auction;
+	public Item startauction() {
+		return auctionDAO.itemDetails();
 	}
 	
-	@PostMapping(value = "/dutchauction/winner/{bidamount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-	public void doDutchAuction(@RequestBody User user,@PathVariable int bidAmount) {
-		if(auction.getBidder().getID() == user.getID()) {
-			dutchAuctionDAO.settingBidingUserAndAmount(user, bidAmount);
-		}
+	@PostMapping(value = "/dutchauction/{id}/{bidAmount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	public String doDutchAuction(@PathVariable int id,@PathVariable int bidAmount) {
+			return auctionDAO.settingDutchBid(id, bidAmount);
 	}
+	
+	@PostMapping(value = "/forwardauction/{id}/{bidAmount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	public String doForwardAuction(@PathVariable int id,@PathVariable int bidAmount) {
+			return auctionDAO.settingForwardBid(id, bidAmount);
+	}
+
+	
+	
+	
 	
 	
 }

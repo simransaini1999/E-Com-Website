@@ -3,12 +3,16 @@ package Indigo.EECS4413Project;
 import java.util.ArrayList;
 
 public class Auction {
-
+	
+	
 	private int price = 0;
 	User bidder;
 	private ArrayList<Item> items;
 	private Item item;
-
+	
+//	public Auction(User bidder) {
+//		this.bidder = bidder;
+//	}
 	public Item getItem() {
 		return item;
 	}
