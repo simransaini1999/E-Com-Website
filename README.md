@@ -42,7 +42,9 @@ get_All_items , delete_items ,updateUser
 
 
 
+
 **For Frontend:**
+
 To implement the minimal browser-client implementations, on Eclipse simply right-click the page you would like to run and it should run on the server.
 
 Otherwise, in the URL enter the name of the file. 
