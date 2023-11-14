@@ -41,21 +41,21 @@ get_All_items , delete_items ,updateUser
 (Edit JSON body)
 
 
-Add path variable 
+Add path variable <br>
 3- /login/{username}/{password}
 
-Add path variable 
+Add path variable <br>
 4- /item/getitem/{itemName}
 
-Add path variable 
+Add path variable <br>
 5- item/selecitem/{itemName}
 
 6- /auction/itemdetails
 
-Add path variable 
+Add path variable <br>
 7- /auction/dutchauction/{id}/{bidAmount}
 
-Add path variable 
+Add path variable <br>
 8- /auction/forwardauction/{id}/{bidAmount}
 
 9- /payement/dutchauction
