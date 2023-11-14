@@ -35,7 +35,4 @@ public class Auction {
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
 	}
-
-
-
 }
