@@ -32,6 +32,13 @@ The steps required to run our project are as followed:<br>
 Addition commands that can be tested
 get_All_items , delete_items ,updateUser
 
+**URL path parameter that can be edited to get the output as followed**
+1- /signup/createuser/  edit JSON body
+
+2- /seller/createitem/itemcontroller/    edit JSON body
+
+
+
 
 
 **For Frontend:**
