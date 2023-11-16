@@ -14,11 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentController {
 
 	@Autowired
-	private PaymentDAO paymentDAO = new PaymentDAO(); 
+	private PaymentDAO paymentDAO; 
 
-	@GetMapping("/{id}")
-	public User getAllUsers(@PathVariable int id){
-		return paymentDAO.getUserbyId(id); 
+	@GetMapping("/forwardauction")
+	public String forwardPayment(){
+		Item item = paymentDAO.getItem();
+		int price = paymentDAO.getForwardBidPrice();
+		User user = paymentDAO.getForwardUser();
+		
+		return "Item : " + item.getItemName() + "\nprice : " + price + "\nuser : " + user.getUsername()+ "\nForward Auction Item";
+	}
+	
+	@GetMapping("/dutchauction")
+	public String dutchPayment(){
+		Item item = paymentDAO.getItem();
+		int price = paymentDAO.getForwardBidPrice();
+		User user = paymentDAO.getForwardUser();
+		
+		return "Item : " + item.getItemName() + "\nprice : " + price + "\nuser : " + user.getUsername() + "\nDutch Auction Item";
 	}
 
 }
