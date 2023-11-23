@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Indigo.EECS4413Project.logic.ItemDAO;
+import Indigo.EECS4413Project.model.Item;
 import jakarta.ws.rs.core.MediaType;
 
 

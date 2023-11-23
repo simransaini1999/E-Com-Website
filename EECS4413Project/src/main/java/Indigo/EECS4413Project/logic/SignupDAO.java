@@ -1,11 +1,11 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.logic;
 
-
-import java.sql.SQLException;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import Indigo.EECS4413Project.model.User;
 
 
 @Repository
@@ -13,9 +13,6 @@ public class SignupDAO extends User {
 	@Autowired
 	UserRepository userrepo;
 
-//	public SignupDAO() {
-//		super();
-//	}
 	public void create(User user) {
 
 		User user1 = new User();
@@ -31,16 +28,7 @@ public class SignupDAO extends User {
 		user1.setUsername(user.getUsername());
 		user1.setPassword(user.getPassword());
 		userrepo.save(user1);
-		
-		//		if(!(user.getUsername().equals(user.getPassword()))) {
-			
-//			
-//		}
-//		else {
-//			System.out.println("Password cannot match username!!!");
-//			
-//		}
-		
+
 		
 	} 
 }

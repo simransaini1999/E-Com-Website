@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.logic;
 
 public interface PriceInterface {
 
