@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.model;
 
 import java.util.ArrayList;
 
@@ -9,10 +9,7 @@ public class Auction {
 	User bidder;
 	private ArrayList<Item> items;
 	private Item item;
-	
-//	public Auction(User bidder) {
-//		this.bidder = bidder;
-//	}
+
 	public Item getItem() {
 		return item;
 	}

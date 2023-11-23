@@ -1,10 +1,9 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.logic;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import jakarta.inject.Qualifier;
+import Indigo.EECS4413Project.model.Item;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpSession;
 
@@ -21,9 +20,6 @@ public class AuctionDAO {
 	@Autowired
 	ServletContext context;
  	
-
-	
-	
 	public Item itemDetails() {
 
 		
@@ -41,7 +37,6 @@ public class AuctionDAO {
 		return "bid submitted";
 	}
 	
-	
 	public String settingForwardBid(int id, int bidAmount) {
 		if(context.getAttribute("forwardBidAmount") == null) {
 			context.setAttribute("highestForwardBidder", id);
@@ -57,11 +52,5 @@ public class AuctionDAO {
 		}
 		return "bid submitted";
 	}
-
-	
-		
-	
-	
-
 
 }

@@ -1,12 +1,15 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.logic;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+import Indigo.EECS4413Project.model.User;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.PathParam;
 
+@Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByID(int id);
@@ -22,6 +25,3 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	void update(@PathParam("username") String username, @PathParam("passowrd") String password);
 
 }
-
-
-//UPDATE users SET password = ? WHERE username = ?

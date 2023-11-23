@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.controller;
 
 
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpSession;
+import Indigo.EECS4413Project.logic.ItemDAO;
+import Indigo.EECS4413Project.model.Item;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.core.MediaType;
 

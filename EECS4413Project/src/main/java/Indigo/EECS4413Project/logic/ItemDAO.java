@@ -1,17 +1,14 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.logic;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import Indigo.EECS4413Project.model.Item;
 import jakarta.servlet.http.HttpSession;
 
-import java.sql.*;
 
 @Service
 public class ItemDAO  {
