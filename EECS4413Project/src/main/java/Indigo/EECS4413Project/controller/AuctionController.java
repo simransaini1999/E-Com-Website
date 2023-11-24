@@ -1,15 +1,15 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.servlet.http.HttpSession;
+import Indigo.EECS4413Project.logic.AuctionDAO;
+import Indigo.EECS4413Project.model.Item;
 import jakarta.ws.rs.core.MediaType;
 
 
@@ -18,8 +18,6 @@ import jakarta.ws.rs.core.MediaType;
 public class AuctionController {
 	@Autowired
 	private AuctionDAO auctionDAO; 
-
-
 
 	@GetMapping(value = "/itemdetails",produces = MediaType.APPLICATION_JSON)
 	@ResponseBody

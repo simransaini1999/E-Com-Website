@@ -1,4 +1,4 @@
-package Indigo.EECS4413Project;
+package Indigo.EECS4413Project.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
