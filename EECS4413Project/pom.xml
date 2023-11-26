@@ -49,6 +49,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+    <!-- Existing dependencies like Spring Boot Starter Web -->
+
+<dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <version>10.1.16</version> <!-- Example version, use a version compatible with your Spring Boot version -->
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version> <!-- JSTL version -->
+    </dependency>
+
 	</dependencies>
 
 	<build>

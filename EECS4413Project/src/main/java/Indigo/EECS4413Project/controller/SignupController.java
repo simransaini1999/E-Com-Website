@@ -1,13 +1,14 @@
 package Indigo.EECS4413Project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import Indigo.EECS4413Project.logic.SignupDAO;
 import Indigo.EECS4413Project.model.User;
 import jakarta.ws.rs.core.MediaType;
 
-@RestController
+@Controller
 @RequestMapping("/signup")
 public class SignupController {
 	@Autowired
@@ -18,4 +19,8 @@ public class SignupController {
 	public void createuser(@RequestBody User user)  {
 		signupDAO.create(user);
 	}
+	@GetMapping("/")
+    public String showRegistrationForm() {
+        return "Register"; // JSP file name would be "Register.jsp"
+    }
 }
