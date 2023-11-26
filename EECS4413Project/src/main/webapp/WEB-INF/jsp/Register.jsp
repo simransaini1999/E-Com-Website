@@ -8,7 +8,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form id="registrationForm" action="/signup/createuser" method="post">
+	<form id="registrationForm" action="/EECS4413Project/signup/createuser" method="post">
     <!-- Your input fields go here -->
 		<div class="container">
 			<div class="row">
@@ -93,7 +93,7 @@
             };
             
             $.ajax({
-                url: $(this).attr('action'), 
+                url: 'http://localhost:8080/EECS4413Project/signup/createuser', 
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(userData),
