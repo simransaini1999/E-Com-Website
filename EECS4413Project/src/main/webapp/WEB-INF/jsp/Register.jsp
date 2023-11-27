@@ -18,23 +18,23 @@
 						<h1 class="text-center">User Registration</h1>
 						<br>
 						<div class="form-group">
-							<label class="control-label" for="firstName">First Name</label> <input
-								type="text" name="firstName" class="form-control"
+							<label class="control-label" for="fName">First Name</label> <input
+								type="text" name="fName" class="form-control"
 								placeholder="First Name">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="lastName">Last Name</label> <input
-								type="text" name="lastName" class="form-control"
+							<label class="control-label" for="lName">Last Name</label> <input
+								type="text" name="lName" class="form-control"
 								placeholder="Last Name">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="street">Street Number</label> <input
-								type="text" name="street" class="form-control"
+							<label class="control-label" for="streetNumber">Street Number</label> <input
+								type="text" name="streetNumber" class="form-control"
 								placeholder="Street Number">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="street">Street Name</label> <input
-								type="text" name="street" class="form-control"
+							<label class="control-label" for="streetName">Street Name</label> <input
+								type="text" name="streetName" class="form-control"
 								placeholder="Street Name">
 						</div>
 						<div class="form-group">
@@ -50,6 +50,11 @@
 							<label class="control-label" for="postalCode">Postal Code</label>
 							<input type="text" name="postalCode" class="form-control"
 								placeholder="Postal Code">
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="email">Email</label> 
+							<input type="text" name="email" class="form-control"
+								placeholder="Email">
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="username">Create a
