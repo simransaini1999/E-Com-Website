@@ -8,8 +8,9 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form id="registrationForm" action="/EECS4413Project/signup/createuser" method="post">
-    <!-- Your input fields go here -->
+	<form id="registrationForm" action="/EECS4413Project/signup/createuser"
+		method="post">
+		<!-- Your input fields go here -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
@@ -28,13 +29,13 @@
 								placeholder="Last Name">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="streetNumber">Street Number</label> <input
-								type="text" name="streetNumber" class="form-control"
-								placeholder="Street Number">
+							<label class="control-label" for="streetNumber">Street
+								Number</label> <input type="text" name="streetNumber"
+								class="form-control" placeholder="Street Number">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="streetName">Street Name</label> <input
-								type="text" name="streetName" class="form-control"
+							<label class="control-label" for="streetName">Street Name</label>
+							<input type="text" name="streetName" class="form-control"
 								placeholder="Street Name">
 						</div>
 						<div class="form-group">
@@ -52,8 +53,8 @@
 								placeholder="Postal Code">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="email">Email</label> 
-							<input type="text" name="email" class="form-control"
+							<label class="control-label" for="email">Email</label> <input
+								type="text" name="email" class="form-control"
 								placeholder="Email">
 						</div>
 						<div class="form-group">
@@ -76,26 +77,28 @@
 			</div>
 		</div>
 	</form>
-	
+
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-	
+
 	<script type="text/javascript">
-    //$(document).ready(function() {
+    $(document).ready(function() {
         $("#registrationForm").on('submit', function(e) {
             e.preventDefault();
 
             // Capture form data
-            var userData = {
-                firstName: $('input[name="firstName"]').val(),
-                lastName: $('input[name="lastName"]').val(),
-                street: $('input[name="street"]').val(),
-                city: $('input[name="city"]').val(),
-                country: $('input[name="country"]').val(),
-                postalCode: $('input[name="postalCode"]').val(),
-                username: $('input[name="username"]').val(),
-                password: $('input[name="password"]').val()
-            };
+           var userData = {
+    			fName: $('input[name="fName"]').val(),
+   		 		lName: $('input[name="lName"]').val(),
+    			streetNumber: $('input[name="streetNumber"]').val(),
+    			streetName: $('input[name="streetName"]').val(),
+    			city: $('input[name="city"]').val(),
+    			country: $('input[name="country"]').val(),
+    			postalCode: $('input[name="postalCode"]').val(),
+    			email: $('input[name="email"]').val(),
+    			username: $('input[name="username"]').val(),
+    			password: $('input[name="password"]').val()
+				};
             
             $.ajax({
                 url: 'http://localhost:8080/EECS4413Project/signup/createuser', 
