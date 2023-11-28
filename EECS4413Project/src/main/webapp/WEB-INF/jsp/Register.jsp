@@ -3,14 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Sign-Up Page</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 </head>
+
 <body>
-	<form id="registrationForm" action="/EECS4413Project/signup/createuser"
-		method="post">
+	<form id="registrationForm">
 		<!-- Your input fields go here -->
 		<div class="container">
 			<div class="row">
@@ -59,8 +62,8 @@
 								placeholder="Email">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="username">Create a
-								Username</label> <input type="text" name="username" class="form-control"
+							<label class="control-label" for="username">Create a Username</label> <input 
+								type="text" name="username" class="form-control"
 								placeholder="Username">
 						</div>
 						<div class="form-group">
@@ -78,17 +81,19 @@
 			</div>
 		</div>
 	</form>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	
 
 
-	<script type="text/javascript">
-    //$(document).ready(function() {
-        $("#registrationForm").on('submit', function(e) {
-            e.preventDefault();
 
-            // Capture form data
-           var userData = {
-    			fName: $('input[name="fName"]').val(),
+	<script>
+	 $(document).ready(function(){
+    $("#registrationForm").on('submit', function(e) {
+        e.preventDefault();
+        // Capture form data
+
+        
+		var userData = {
+				fName: $('input[name="fName"]').val(),
    		 		lName: $('input[name="lName"]').val(),
     			streetNumber: $('input[name="streetNumber"]').val(),
     			streetName: $('input[name="streetName"]').val(),
@@ -98,24 +103,25 @@
     			email: $('input[name="email"]').val(),
     			username: $('input[name="username"]').val(),
     			password: $('input[name="password"]').val()
-				};
-            console.log(userData.fName);
-            
-            $.ajax({
-                url: 'http://localhost:8080/EECS4413Project/signup', 
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(userData),
-                success: function(response) {
-                    alert('Registration successful!');
-                    // Redirect or update UI as needed
-                },
-                error: function(xhr, status, error) {
-                    alert('Registration failed: ' + error);
-                }
-            });
-        });
+			};
+        
+		$.ajax({
+		    url: "http://localhost:8080/signup/createuser",
+		    type: 'POST',
+		    contentType: 'application/json',
+		    data: JSON.stringify(userData),
+		    success: function(response) {
+                console.log(userData);
+		    	alert('Registration successful!');
+                // Redirect or update UI as neede
+                
+            },
+            error: function(xhr, status, error) {
+                alert('Registration failed: ' + error + xhr + '' + status);
+            }
+		});
     });
+	 });
 </script>
 
 

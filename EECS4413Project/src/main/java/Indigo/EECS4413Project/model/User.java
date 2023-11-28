@@ -1,5 +1,7 @@
 package Indigo.EECS4413Project.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,39 +14,46 @@ import jakarta.persistence.Table;
 @Table(name="users")
 public class User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
-	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "password")
-	private String password;
-	
-	@Column(name = "username")
-	private String username;
-	
-	@Column(name = "fName")
-	private String fName;
-	
-	@Column(name = "lName")
-	private String lName;
-	
-	@Column(name = "streetNumber")
-	private String streetNumber;
-	
-	@Column(name = "streetName")
-	private String streetName;
-	
-	@Column(name = "postalCode")
-	private String postalCode;
-	
-	@Column(name = "city")
-	private String city;
-	
-	@Column(name = "country")
-	private String country;
+	  @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private int ID;
+
+	    @Column(name = "email")
+	    private String email;
+
+	    @Column(name = "password")
+	    private String password;
+
+	    @Column(name = "username")
+	    private String username;
+
+	    @JsonProperty("fName") // Map to JSON property "fName"
+	    @Column(name = "fName")
+	    private String fName;
+
+	    @JsonProperty("lName") // Map to JSON property "lName"
+	    @Column(name = "lName")
+	    private String lName;
+
+	    @JsonProperty("streetNumber") // Map to JSON property "streetNumber"
+	    @Column(name = "streetNumber")
+	    private String streetNumber;
+
+	    @JsonProperty("streetName") // Map to JSON property "streetName"
+	    @Column(name = "streetName")
+	    private String streetName;
+
+	    @JsonProperty("postalCode") // Map to JSON property "postalCode"
+	    @Column(name = "postalCode")
+	    private String postalCode;
+
+	    @JsonProperty("city") // Map to JSON property "city"
+	    @Column(name = "city")
+	    private String city;
+
+	    @JsonProperty("country") // Map to JSON property "country"
+	    @Column(name = "country")
+	    private String country;
 	
 	
 
