@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Sign-In Page</title>
+<title>Forget Password</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,23 +18,19 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="jumbotron">
-                        <h1 class="text-center">Login Page</h1>
+                        <h1 class="text-center">Forgot Password?</h1>
                         <br>
                         <div class="form-group">
                             <label class="control-label" for="username">Username</label>
                             <input type="text" name="username" class="form-control" placeholder="Username">
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="password">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password">
+                            <label class="control-label" for="newPassword">New Password</label>
+                            <input type="password" name="newPassword" class="form-control" placeholder="New Password">
                         </div>
                         <div class="form-group">
-                            <a href="ForgetPassword.jsp">Forgot your password?</a>
-                        </div>
-                   
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Login</button>
-                            <a href="Register.jsp" class="btn btn-secondary">Register Instead</a>
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                            <a href="Login.jsp" class="btn btn-secondary">Login Instead</a>
                         </div>
                     </div>
                 </div>
