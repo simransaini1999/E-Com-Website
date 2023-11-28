@@ -5,9 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Sign-Up Page</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -60,8 +62,8 @@
 								placeholder="Email">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="username">Create a
-								Username</label> <input type="text" name="username" class="form-control"
+							<label class="control-label" for="username">Create a Username</label> <input 
+								type="text" name="username" class="form-control"
 								placeholder="Username">
 						</div>
 						<div class="form-group">
@@ -84,35 +86,42 @@
 
 
 	<script>
-	$(document).ready(function () {
+	 $(document).ready(function(){
     $("#registrationForm").on('submit', function(e) {
         e.preventDefault();
         // Capture form data
 
         
 		var userData = {
-				fName: $("#fName").val(),
-				lName: $("#lName").val(),
-				streetNumber: $("#streetNumber").val(),
-				streetName: $("#streetName").val(),
-				city: $("#city").val(),
-				country: $("#country").val(),
-				postalCode: $("#postalCode").val(),
-				email: $("#email").val(),
-				username: $("#username").val(),
-				password: $("#password").val()
+				fName: $('input[name="fName"]').val(),
+   		 		lName: $('input[name="lName"]').val(),
+    			streetNumber: $('input[name="streetNumber"]').val(),
+    			streetName: $('input[name="streetName"]').val(),
+    			city: $('input[name="city"]').val(),
+    			country: $('input[name="country"]').val(),
+    			postalCode: $('input[name="postalCode"]').val(),
+    			email: $('input[name="email"]').val(),
+    			username: $('input[name="username"]').val(),
+    			password: $('input[name="password"]').val()
 			};
         
-        $.ajax({
-            url: "localhost:8080/signup/createuser", 
-			type: 'POST',
-
-			contentType: 'application/json',
-
-			data: JSON.stringify(userData)
-        });
+		$.ajax({
+		    url: "http://localhost:8080/signup/createuser",
+		    type: 'POST',
+		    contentType: 'application/json',
+		    data: JSON.stringify(userData),
+		    success: function(response) {
+                console.log(userData);
+		    	alert('Registration successful!');
+                // Redirect or update UI as neede
+                
+            },
+            error: function(xhr, status, error) {
+                alert('Registration failed: ' + error + xhr + '' + status);
+            }
+		});
     });
-	});
+	 });
 </script>
 
 
