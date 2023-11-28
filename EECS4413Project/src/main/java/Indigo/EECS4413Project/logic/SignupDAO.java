@@ -4,11 +4,12 @@ package Indigo.EECS4413Project.logic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import Indigo.EECS4413Project.model.User;
 
 
-@Repository
+@Service
 public class SignupDAO extends User {
 	@Autowired
 	UserRepository userrepo;

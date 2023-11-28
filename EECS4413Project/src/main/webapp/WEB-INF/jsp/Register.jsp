@@ -8,7 +8,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form id="registrationForm" action="/signup/createuser" method="post">
+	<form id="registrationForm" action="<%= request.getContextPath() %>/signup/createuser" method="post">
     <!-- Your input fields go here -->
 		<div class="container">
 			<div class="row">
@@ -52,8 +52,8 @@
 								placeholder="Postal Code">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="username">Create a
-								Username</label> <input type="text" name="username" class="form-control"
+							<label class="control-label" for="username">Create a Username</label> 
+							<input type="text" name="username" class="form-control"
 								placeholder="Username">
 						</div>
 						<div class="form-group">
@@ -77,13 +77,13 @@
 	
 	<script type="text/javascript">
     //$(document).ready(function() {
-        $("#registrationForm").on('submit', function(e) {
+        $("#registrationForm").submit(function(e) {
             e.preventDefault();
 
             // Capture form data
             var userData = {
-                firstName: $('input[name="firstName"]').val(),
-                lastName: $('input[name="lastName"]').val(),
+                fName: $('input[name="firstName"]').val(),
+                lName: $('input[name="lastName"]').val(),
                 street: $('input[name="street"]').val(),
                 city: $('input[name="city"]').val(),
                 country: $('input[name="country"]').val(),
@@ -95,7 +95,7 @@
             $.ajax({
                 url: $(this).attr('action'), 
                 type: 'POST',
-                contentType: 'application/json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                 data: JSON.stringify(userData),
                 success: function(response) {
                     alert('Registration successful!');
