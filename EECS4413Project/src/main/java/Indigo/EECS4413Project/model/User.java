@@ -89,8 +89,8 @@ public class User {
 	public String getStreetName() {
 		return streetName;
 	}
-	public void setStreetName(String streedName) {
-		this.streetName = streedName;
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
 	}
 	public String getPostalCode() {
 		return postalCode;

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sign-Up Page</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 	<form id="registrationForm" action="/EECS4413Project/signup/createuser"
@@ -77,12 +78,11 @@
 			</div>
 		</div>
 	</form>
-
 	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
+
 
 	<script type="text/javascript">
-    $(document).ready(function() {
+    //$(document).ready(function() {
         $("#registrationForm").on('submit', function(e) {
             e.preventDefault();
 
@@ -99,9 +99,10 @@
     			username: $('input[name="username"]').val(),
     			password: $('input[name="password"]').val()
 				};
+            console.log(userData.fName);
             
             $.ajax({
-                url: 'http://localhost:8080/EECS4413Project/signup/createuser', 
+                url: 'http://localhost:8080/EECS4413Project/signup', 
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(userData),
