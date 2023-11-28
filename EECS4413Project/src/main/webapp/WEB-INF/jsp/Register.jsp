@@ -79,7 +79,6 @@
 			</div>
 		</div>
 	</form>
-<<<<<<< HEAD
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	
@@ -91,12 +90,7 @@
 
     <p>Message: <%= message %></p>
     <p>Number: <%= number %></p>
-=======
-	
->>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
 
-
-<<<<<<< HEAD
 	<script type="text/javascript">
     $(document).ready(function() {
         $("#registrationForm").on('submit', function(e) {
@@ -132,7 +126,7 @@
                     alert('Registration failed: ' + error);
                 }
             });
-=======
+
 
 	<script>
 	$(document).ready(function () {
@@ -170,13 +164,12 @@
 			error: function (error) {
 				console.log(error);
 			}
->>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
+
         });
     });
-<<<<<<< HEAD
-=======
+
 	});
->>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
+
 </script>
 
 
