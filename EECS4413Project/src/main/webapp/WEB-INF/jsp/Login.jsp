@@ -57,13 +57,13 @@
 	var password = $('input[name="password"]').val();
 	
 	$.ajax({
-        url: "http://localhost:8080/login" + username + password, 
+        url: "http://localhost:8080/login/" + username + "/" + password, 
 		type: 'GET',
 		 success: function(response) {
              console.log(response);
 			if(response == true){
 				
-             window.location.href = "/loginjsp/";
+             window.location.href = "/register/";
 			}
 			else{
 			alert('Login failed: ' + error);
