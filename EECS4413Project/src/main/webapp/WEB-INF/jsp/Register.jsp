@@ -5,9 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Sign-Up Page</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="#">
 </head>
 
 <body>
@@ -84,7 +85,7 @@
 
 
 	<script>
-	$(document).ready(function () {
+	 $(document).ready(function(){
     $("#registrationForm").on('submit', function(e) {
         e.preventDefault();
         // Capture form data
@@ -109,10 +110,18 @@
 
 			contentType: 'application/json',
 
-			data: JSON.stringify(userData)
+			data: JSON.stringify(userData),
+			
+			 success: function(response) {
+                 alert('Registration successful!');
+                 // Redirect or update UI as needed
+             },
+             error: function(xhr, status, error) {
+                 alert('Registration failed: ' + error + xhr + '' + status);
+             }
         });
     });
-	});
+	 });
 </script>
 
 
