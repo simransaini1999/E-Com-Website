@@ -77,15 +77,25 @@
 			</div>
 		</div>
 	</form>
-
-	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	
+
+ <%
+        String message = "Hello, World!";
+        int number = 42;
+    %>
+
+    <p>Message: <%= message %></p>
+    <p>Number: <%= number %></p>
+
 
 	<script type="text/javascript">
     $(document).ready(function() {
         $("#registrationForm").on('submit', function(e) {
             e.preventDefault();
-
+            console.log("Hello");
+            
             // Capture form data
            var userData = {
     			fName: $('input[name="fName"]').val(),
@@ -100,8 +110,10 @@
     			password: $('input[name="password"]').val()
 				};
             
+           
             $.ajax({
                 url: 'http://localhost:8080/EECS4413Project/signup/createuser', 
+                type: 'POST',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(userData),
@@ -114,7 +126,7 @@
                 }
             });
         });
-    //});
+    });
 </script>
 
 
