@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Sign-Up Page</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-	<form id="registrationForm" action="/EECS4413Project/signup/createuser"
-		method="post">
+	<form id="registrationForm">
 		<!-- Your input fields go here -->
 		<div class="container">
 			<div class="row">
@@ -77,50 +79,51 @@
 			</div>
 		</div>
 	</form>
+	
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
 
-	<script type="text/javascript">
-    $(document).ready(function() {
-        $("#registrationForm").on('submit', function(e) {
-            e.preventDefault();
->>>>>>> branch 'Esha' of https://github.com/simransaini1999/E-Com-Website.git
 
-<<<<<<< HEAD
-=======
-            // Capture form data
-           var userData = {
-    			fName: $('input[name="fName"]').val(),
-   		 		lName: $('input[name="lName"]').val(),
-    			streetNumber: $('input[name="streetNumber"]').val(),
-    			streetName: $('input[name="streetName"]').val(),
-    			city: $('input[name="city"]').val(),
-    			country: $('input[name="country"]').val(),
-    			postalCode: $('input[name="postalCode"]').val(),
-    			email: $('input[name="email"]').val(),
-    			username: $('input[name="username"]').val(),
-    			password: $('input[name="password"]').val()
-				};
-            
-            $.ajax({
-                url: 'http://localhost:8080/EECS4413Project/signup/createuser', 
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(userData),
-                success: function(response) {
-                    alert('Registration successful!');
-                    // Redirect or update UI as needed
-                },
-                error: function(xhr, status, error) {
-                    alert('Registration failed: ' + error);
-                }
-            });
+	<script>
+	$(document).ready(function () {
+    $("#registrationForm").on('submit', function(e) {
+        e.preventDefault();
+        // Capture form data
+
+        
+		var userData = {
+				fName: $("#fName").val(),
+				lName: $("#lName").val(),
+				streetNumber: $("#streetNumber").val(),
+				streetName: $("#streetName").val(),
+				city: $("#city").val(),
+				country: $("#country").val(),
+				postalCode: $("#postalCode").val(),
+				email: $("#email").val(),
+				username: $("#username").val(),
+				password: $("#password").val()
+			};
+        
+        $.ajax({
+            url: "localhost:8080/signup/createuser", 
+			type: 'POST',
+
+			contentType: 'application/json',
+
+			data: JSON.stringify(userData),
+			
+            success: function(response) {
+                alert('Registration successful!');
+                // Redirect or update UI as needed
+            },
+
+			error: function (error) {
+				console.log(error);
+			}
         });
-    //});
+    });
+	});
 </script>
 
 
 </body>
 </html>
->>>>>>> branch 'Esha' of https://github.com/simransaini1999/E-Com-Website.git
