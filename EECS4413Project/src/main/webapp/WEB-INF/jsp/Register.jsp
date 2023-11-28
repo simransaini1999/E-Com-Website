@@ -85,27 +85,26 @@
 
 
 	<script>
-	 $(document).ready(function(){
     $("#registrationForm").on('submit', function(e) {
         e.preventDefault();
         // Capture form data
 
         
 		var userData = {
-				fName: $("#fName").val(),
-				lName: $("#lName").val(),
-				streetNumber: $("#streetNumber").val(),
-				streetName: $("#streetName").val(),
-				city: $("#city").val(),
-				country: $("#country").val(),
-				postalCode: $("#postalCode").val(),
-				email: $("#email").val(),
-				username: $("#username").val(),
-				password: $("#password").val()
+				fName: $('input[name="fName"]').val(),
+   		 		lName: $('input[name="lName"]').val(),
+    			streetNumber: $('input[name="streetNumber"]').val(),
+    			streetName: $('input[name="streetName"]').val(),
+    			city: $('input[name="city"]').val(),
+    			country: $('input[name="country"]').val(),
+    			postalCode: $('input[name="postalCode"]').val(),
+    			email: $('input[name="email"]').val(),
+    			username: $('input[name="username"]').val(),
+    			password: $('input[name="password"]').val()
 			};
         
         $.ajax({
-            url: "localhost:8080/signup/createuser", 
+            url: "http://localhost:8080/signup/createuser", 
 			type: 'POST',
 
 			contentType: 'application/json',
@@ -114,14 +113,17 @@
 			
 			 success: function(response) {
                  alert('Registration successful!');
-                 // Redirect or update UI as needed
+                 window.location.href = "/loginjsp/";
              },
              error: function(xhr, status, error) {
-                 alert('Registration failed: ' + error + xhr + '' + status);
+                 alert('Registration failed: ' + error);
+                 // You might also want to log the details to the console for debugging
+                 console.error('XHR Status:', status);
+                 console.error('Error:', error);
              }
         });
     });
-	 });
+
 </script>
 
 
