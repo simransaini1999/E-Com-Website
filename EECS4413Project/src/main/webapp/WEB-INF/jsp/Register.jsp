@@ -109,16 +109,7 @@
 
 			contentType: 'application/json',
 
-			data: JSON.stringify(userData),
-			
-            success: function(response) {
-                alert('Registration successful!');
-                // Redirect or update UI as needed
-            },
-
-			error: function (error) {
-				console.log(error);
-			}
+			data: JSON.stringify(userData)
         });
     });
 	});
