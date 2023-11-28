@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Sign-In Page</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="#">
 </head>
 <body>
-    <form action="">
+    <form id="loginForm">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
@@ -45,8 +48,41 @@
         </div>
     </form>
 
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
+	<script>
+	
+	$("#loginForm").on('submit', function(e) {
+        e.preventDefault();
+	
+	var username = $('input[name="username"]').val(); 
+	var password = $('input[name="password"]').val();
+	
+	$.ajax({
+        url: "http://localhost:8080/login/" + username + "/" + password, 
+		type: 'GET',
+		 success: function(response) {
+             console.log(response);
+			if(response == true){
+				
+             window.location.href = "/register/";
+			}
+			else{
+			alert('Login failed: ' + error);
+			}
+         },
+         error: function(xhr, status, error) {
+             alert('Registration failed: ' + error);
+             // You might also want to log the details to the console for debugging
+             console.error('XHR Status:', status);
+             console.error('Error:', error);
+         }
+    });
+});
+	
+	
+		
+	</script>
+    
+    
     <script>
         // JavaScript to toggle the display of the reset password section
         document.querySelector('a[href="forgot_password.html"]').addEventListener('click', function(event) {

@@ -5,11 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Sign-Up Page</title>
+<<<<<<< HEAD
 
+=======
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+>>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
+=======
+<link rel="shortcut icon" href="#">
+>>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
 </head>
 
 <body>
@@ -86,7 +94,10 @@
 
 
 	<script>
+<<<<<<< HEAD
 	 $(document).ready(function(){
+=======
+>>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
     $("#registrationForm").on('submit', function(e) {
         e.preventDefault();
         // Capture form data
@@ -105,6 +116,7 @@
     			password: $('input[name="password"]').val()
 			};
         
+<<<<<<< HEAD
 		$.ajax({
 		    url: "http://localhost:8080/signup/createuser",
 		    type: 'POST',
@@ -120,8 +132,33 @@
                 alert('Registration failed: ' + error + xhr + '' + status);
             }
 		});
+=======
+        $.ajax({
+            url: "http://localhost:8080/signup/createuser", 
+			type: 'POST',
+
+			contentType: 'application/json',
+
+			data: JSON.stringify(userData),
+			
+			 success: function(response) {
+                 alert('Registration successful!');
+                 window.location.href = "/loginjsp/";
+             },
+             error: function(xhr, status, error) {
+                 alert('Registration failed: ' + error);
+                 // You might also want to log the details to the console for debugging
+                 console.error('XHR Status:', status);
+                 console.error('Error:', error);
+             }
+        });
+>>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
     });
+<<<<<<< HEAD
 	 });
+=======
+
+>>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
 </script>
 
 
