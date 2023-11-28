@@ -8,19 +8,15 @@ import Indigo.EECS4413Project.logic.SignupDAO;
 import Indigo.EECS4413Project.model.User;
 import jakarta.ws.rs.core.MediaType;
 
-@Controller
+@RestController
 @RequestMapping("/signup")
 public class SignupController {
 	@Autowired
 	private SignupDAO signupDAO;
 
 	@PostMapping(value = "/createuser",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
-
 	public void createuser(@RequestBody User user)  {
 		signupDAO.create(user);
 	}
-	@GetMapping("/")
-    public String showRegistrationForm() {
-        return "Register"; // JSP file name would be "Register.jsp"
-    }
+
 }
