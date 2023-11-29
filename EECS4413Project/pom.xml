@@ -49,6 +49,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 		
     <!-- Existing dependencies like Spring Boot Starter Web -->
 
@@ -64,6 +66,11 @@
         <version>1.2</version> <!-- JSTL version -->
     </dependency>
 
+    <dependency>
+    	<groupId>org.yorku</groupId>
+    	<artifactId>StudentInformationSystem</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
 	</dependencies>
 
 	<build>
