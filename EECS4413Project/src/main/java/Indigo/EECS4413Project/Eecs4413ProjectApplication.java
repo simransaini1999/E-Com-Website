@@ -10,8 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 public class Eecs4413ProjectApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(Eecs4413ProjectApplication.class, args);
 	}
+	
 
 }
 

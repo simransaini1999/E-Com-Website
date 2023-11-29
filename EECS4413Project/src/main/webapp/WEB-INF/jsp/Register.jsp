@@ -72,7 +72,7 @@
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary">Register</button>
-							<a href="Login.jsp" class="btn btn-secondary">Login Instead</a>
+							<a href="/loginjsp/" class="btn btn-secondary">Login Instead</a>
 						</div>
 					</div>
 				</div>
@@ -112,7 +112,6 @@
 			data: JSON.stringify(userData),
 			
 			 success: function(response) {
-                 alert('Registration successful!');
                  window.location.href = "/loginjsp/";
              },
              error: function(xhr, status, error) {

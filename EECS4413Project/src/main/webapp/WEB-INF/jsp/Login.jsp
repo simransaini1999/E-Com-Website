@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Login</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
-                            <a href="Register.jsp" class="btn btn-secondary">Register Instead</a>
+                            <a href="/register/" class="btn btn-secondary">Register Instead</a>
                         </div>
                     </div>
                 </div>

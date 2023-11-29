@@ -18,8 +18,8 @@
     <div class="container">
         <h2>Welcome to the Auction System! What would you like to do?</h2>
         <div class="btn-group">
-            <a href="Login.jsp" class="btn btn-primary">Sign-In</a>
-            <a href="Register.jsp" class="btn btn-secondary">Sign-Up</a>
+            <a href="/loginjsp/" class="btn btn-primary">Sign-In</a>
+            <a href="/register/" class="btn btn-secondary">Sign-Up</a>
         </div>
     </div>
 
