@@ -63,7 +63,7 @@
              console.log(response);
 			if(response == true){
 				
-             window.location.href = "/register/";
+             window.location.href = "/itemjsp/";
 			}
 			else{
 			alert('Login failed: ' + error);
