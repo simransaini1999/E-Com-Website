@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -258,5 +257,5 @@
 
 
 </body>
->>>>>>> branch 'Harsimran' of https://github.com/simransaini1999/E-Com-Website.git
+
 </html>
