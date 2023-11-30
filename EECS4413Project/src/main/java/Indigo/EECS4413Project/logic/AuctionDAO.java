@@ -52,5 +52,26 @@ public class AuctionDAO {
 		}
 		return "bid submitted";
 	}
+	
+//	public int forwardTimer() {
+//		int counter = 61;
+//		
+//		while(counter > 0) {
+//			counter = counter-1;
+//			try {
+//				
+//				Thread.sleep(1000);
+//				return counter;
+//				
+//				
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//		itemDAO.remove((String)context.getAttribute("itemName"));
+//		return 0;
+//
+//	}
 
 }
