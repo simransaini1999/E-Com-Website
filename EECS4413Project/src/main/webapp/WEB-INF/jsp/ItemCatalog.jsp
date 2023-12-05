@@ -17,7 +17,7 @@
                     <th>Auction Type</th>
                     <th>Remaining Time</th>
                     <th>Select to Bid</th>
-                </tr>
+                </tr>          
             </thead>
             <tbody>
                 <tr>
