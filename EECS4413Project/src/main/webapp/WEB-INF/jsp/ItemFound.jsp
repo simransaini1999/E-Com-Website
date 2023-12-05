@@ -62,6 +62,7 @@
     function Bid(){
     	
     	var itemName = localStorage.getItem("keyword");
+<<<<<<< HEAD
     	var auctionType = localStorage.getItem("auction");
     	$.ajax({
             url: "http://localhost:8080/item/selectitem/" + itemName,
@@ -88,3 +89,32 @@
    
 </body>
 </html>
+=======
+    	console.log(itemName);
+    	var auctionType = localStorage.getItem("auction");
+    	$.ajax({
+            url: "http://localhost:8080/item/selectitem/" + itemName,
+            type: 'POST',
+            success: function(response) {
+            	console.log(auctionType); 
+            		/* if(auctionType ==  "Dutch Auction"){
+            			window.location.href = "/DutchAuctionjsp/";
+            		}else{
+            			window.location.href = "/ForwardAuctionjsp/";
+            		} */
+                 },
+            error: function(xhr, status, error) {
+                console.error('AJAX Request Failed:', xhr, status, error);
+                alert('AJAX Request failed: ' + error);
+            }
+        });
+    }
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+   
+</body>
+</html>
+>>>>>>> branch 'Harshil' of https://github.com/simransaini1999/E-Com-Website.git
