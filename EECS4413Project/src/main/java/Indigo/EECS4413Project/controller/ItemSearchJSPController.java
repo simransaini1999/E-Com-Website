@@ -12,5 +12,4 @@ public class ItemSearchJSPController {
     public String showRegistrationForm() {
         return "ItemSearch"; // JSP file name would be "Register.jsp"
     }
-	
 }

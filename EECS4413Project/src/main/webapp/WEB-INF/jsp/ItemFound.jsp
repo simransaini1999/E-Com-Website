@@ -62,17 +62,18 @@
     function Bid(){
     	
     	var itemName = localStorage.getItem("keyword");
+    	console.log(itemName);
     	var auctionType = localStorage.getItem("auction");
     	$.ajax({
             url: "http://localhost:8080/item/selectitem/" + itemName,
             type: 'POST',
             success: function(response) {
             	console.log(auctionType); 
-            		 if(auctionType ==  "Dutch Auction"){
+            		/* if(auctionType ==  "Dutch Auction"){
             			window.location.href = "/DutchAuctionjsp/";
             		}else{
             			window.location.href = "/ForwardAuctionjsp/";
-            		} 
+            		} */
                  },
             error: function(xhr, status, error) {
                 console.error('AJAX Request Failed:', xhr, status, error);
