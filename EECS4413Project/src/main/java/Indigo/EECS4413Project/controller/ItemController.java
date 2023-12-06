@@ -36,14 +36,11 @@ public class ItemController {
 
 	@GetMapping(value = "/getitem/{itemName}",produces = MediaType.APPLICATION_JSON)
 	public Item getItem(@PathVariable String itemName) {
-		System.out.println("getItem");
 		return itemDAO.getItemByName(itemName);
 	}
 	
 	@PostMapping(value = "/selectitem/{itemName}", produces = MediaType.APPLICATION_JSON)
 	public void chooseItem(@PathVariable String itemName) {
-		System.out.println("Hellos");
-		System.out.println(itemName);
 		itemDAO.selectItem(itemName);
 	}
 	

@@ -70,11 +70,11 @@ function Bid() {
         type: 'POST',
         success: function(response) {
             console.log(auctionType);
-            		/* if(auctionType ==  "Dutch Auction"){
+            		if(auctionType ==  "Dutch Auction"){
             			window.location.href = "/DutchAuctionjsp/";
             		}else{
             			window.location.href = "/ForwardAuctionjsp/";
-            		} */
+            		} 
         },
         error: function(xhr, status, error) {
             console.error('AJAX Request Failed:', xhr, status, error);

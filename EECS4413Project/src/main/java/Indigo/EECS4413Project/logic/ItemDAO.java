@@ -25,7 +25,7 @@ public class ItemDAO  {
 	
 	public void selectItem(String itemName) {
 		session.setAttribute("itemName", itemName);
-		System.out.println("added"+ itemName);
+		
 		
 	}
 	public void create(Item item) {
