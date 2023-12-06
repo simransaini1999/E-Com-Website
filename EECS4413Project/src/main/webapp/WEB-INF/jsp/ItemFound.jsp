@@ -36,54 +36,56 @@
     </div>
 
     <script>
-    $(document).ready(function(){
-        // Retrieve itemName from the session
-        var itemName = localStorage.getItem("keyword");
-        
-        $.ajax({
-            url: "http://localhost:8080/item/getitem/" + itemName,
-            type: 'GET',
-            success: function(response) {
-                // Print out itemName, auctionType, and startingBidPrice
-            	$("#itemTableBody").append("<tr><td>" + response.itemName + 
-                        "</td><td>" + response.startingBidPrice + "</td><td>" + 
-                        response.auctionType + "</td>" +
-                        // Add radio button in a new column
-                        "<td><input type='radio' name='bidSelection'></td></tr>");
-                localStorage.setItem("auction",response.auctionType);
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Request Failed:', xhr, status, error);
-                alert('AJAX Request failed: ' + error);
-            }
-        });
+$(document).ready(function(){
+    // Retrieve itemName from the session
+    var itemName = localStorage.getItem("keyword");
+    
+    $.ajax({
+        url: "http://localhost:8080/item/getitem/" + itemName,
+        type: 'GET',
+        success: function(response) {
+            // Print out itemName, auctionType, and startingBidPrice
+            $("#itemTableBody").append("<tr><td>" + response.itemName + 
+                    "</td><td>" + response.startingBidPrice + "</td><td>" + 
+                    response.auctionType + "</td>" +
+                    // Add radio button in a new column
+                    "<td><input type='radio' name='bidSelection'></td></tr>");
+            localStorage.setItem("auction", response.auctionType);
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Request Failed:', xhr, status, error);
+            alert('AJAX Request failed: ' + error);
+        }
     });
-
-    function Bid(){
-    	
-    	var itemName = localStorage.getItem("keyword");
-    	console.log(itemName);
-    	var auctionType = localStorage.getItem("auction");
-    	$.ajax({
-            url: "http://localhost:8080/item/selectitem/" + itemName,
-            type: 'POST',
-            success: function(response) {
-            	console.log(auctionType); 
+    $("#bidButton").on("click", function() {
+        Bid();
+    });
+});
+function Bid() {
+    var itemName = localStorage.getItem("keyword");
+    console.log(itemName);
+    var auctionType = localStorage.getItem("auction");
+    $.ajax({
+        url: "http://localhost:8080/item/selectitem/" + itemName,
+        type: 'POST',
+        success: function(response) {
+            console.log(auctionType);
             		/* if(auctionType ==  "Dutch Auction"){
             			window.location.href = "/DutchAuctionjsp/";
             		}else{
             			window.location.href = "/ForwardAuctionjsp/";
             		} */
-                 },
-            error: function(xhr, status, error) {
-                console.error('AJAX Request Failed:', xhr, status, error);
-                alert('AJAX Request failed: ' + error);
-            }
-        });
-    }
-    function goBack() {
-        window.history.back();
-    }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Request Failed:', xhr, status, error);
+            alert('AJAX Request failed: ' + error);
+        }
+    });
+}
+
+function goBack() {
+    window.history.back();
+}
 </script>
 
    

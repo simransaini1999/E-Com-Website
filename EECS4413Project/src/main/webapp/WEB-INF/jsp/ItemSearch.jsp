@@ -38,8 +38,8 @@
             var keyword = $('input[name="keyword"]').val();
 
             $.ajax({
-                url: "/item/selectitem/" + keyword, // Replace with your server-side endpoint
-                type: 'POST',
+                url: "/item/getitem/" + keyword, // Replace with your server-side endpoint
+                type: 'GET',
                 data: { keyword: keyword },
                 success: function(response) {
                     console.log("Keyword stored successfully");

@@ -36,6 +36,7 @@ public class ItemController {
 
 	@GetMapping(value = "/getitem/{itemName}",produces = MediaType.APPLICATION_JSON)
 	public Item getItem(@PathVariable String itemName) {
+		System.out.println("getItem");
 		return itemDAO.getItemByName(itemName);
 	}
 	
