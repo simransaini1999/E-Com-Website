@@ -10,7 +10,7 @@
 <link rel="shortcut icon" href="#">
 </head>
 <body>
-    <form id="loginForm">
+    <form id = "loginForm">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
@@ -27,18 +27,11 @@
                             <input type="password" name="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <a href="forgot_password.html">Forgot your password?</a>
+                            <a href="/forgotpassword/">Forgot your password?</a>
                         </div>
-                        <div id="resetPassword" style="display: none;">
-                            <p>To reset your password, please enter your email:</p>
-                            <div class="form-group">
-                                <label class="control-label" for="email">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter Your Email">
-                            </div>
-                        </div>
+                   
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Login</button>
-                            <button type="reset" class="btn btn-secondary">Reset</button>
                             <a href="/register/" class="btn btn-secondary">Register Instead</a>
                         </div>
                     </div>
@@ -47,8 +40,8 @@
             </div>
         </div>
     </form>
-
-	<script>
+    
+    	<script>
 	
 	$("#loginForm").on('submit', function(e) {
         e.preventDefault();
@@ -81,14 +74,6 @@
 	
 		
 	</script>
-    
-    
-    <script>
-        // JavaScript to toggle the display of the reset password section
-        document.querySelector('a[href="forgot_password.html"]').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.getElementById('resetPassword').style.display = 'block';
-        });
-    </script>
+
 </body>
 </html>
