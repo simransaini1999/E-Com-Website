@@ -20,6 +20,7 @@
         <div class="btn-group">
             <a href="/loginjsp/" class="btn btn-primary">Sign-In</a>
             <a href="/register/" class="btn btn-secondary">Sign-Up</a>
+            <a href="/sellerjsp/" class="btn btn-info">Sell Item</a>
         </div>
     </div>
 
