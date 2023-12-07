@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import Indigo.EECS4413Project.logic.AuctionDAO;
 import Indigo.EECS4413Project.logic.ItemDAO;
 import Indigo.EECS4413Project.model.Item;
 import jakarta.transaction.Transactional;
@@ -17,6 +18,9 @@ public class ItemController {
 
 	@Autowired
 	private ItemDAO itemDAO; 
+	
+	@Autowired
+	private AuctionDAO auctionDAO;
 
 	@PostMapping(value = "/createitem",consumes = MediaType.APPLICATION_JSON,produces = MediaType.APPLICATION_JSON)
 	public void createItem(@RequestBody Item item) {

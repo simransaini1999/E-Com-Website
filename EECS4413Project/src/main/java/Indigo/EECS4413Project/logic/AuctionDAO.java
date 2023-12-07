@@ -75,6 +75,27 @@ public class AuctionDAO {
 	        System.out.println("ERROR: Bid amount not greater than current bid!");
 	    }
 	}
+	
+//	public int forwardTimer() {
+//		int counter = 61;
+//		
+//		while(counter > 0) {
+//			counter = counter-1;
+//			try {
+//				
+//				Thread.sleep(1000);
+//				return counter;
+//				
+//				
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//		itemDAO.remove((String)context.getAttribute("itemName"));
+//		return 0;
+//
+//	}
 
 	
 	public int getHighestBidderAndBid(){
