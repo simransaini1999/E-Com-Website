@@ -14,9 +14,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByID(int id);
 	
+	@Query(value = "SELECT ID FROM users WHERE username = :username AND password = :password",nativeQuery = true)
+	int findID(String username, String password);
 	
 	@Query(value = "SELECT password FROM users WHERE username = ?1",nativeQuery = true)
-	String findbyUsername(String username);
+	String findbyUsername(String usernameID);
 
 
 	@Modifying

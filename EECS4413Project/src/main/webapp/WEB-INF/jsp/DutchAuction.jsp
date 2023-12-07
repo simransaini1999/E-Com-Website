@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title> Dutch Auction Bidding</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <div class="container">
@@ -17,36 +20,68 @@
                     <th>Shipping Price</th>
                     <th>Current Price</th>
                     <th>Auction Type</th>
-                    <th>Select to Buy</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Item 1</td>
-                    <td>Description of Item 1</td>
-                    <td>$25.00</td>
-                    <td>$100.00</td>
-                    <td>Dutch Auction</td>
-                    <td><input type="radio" name="selectedItem" value="item1"></td>
-                </tr>
-                <tr>
-                    <td>Item 2</td>
-                    <td>Description of Item 2</td>
-                    <td>$15.00</td>
-                    <td>$75.00</td>
-                    <td>Dutch Auction</td>
-                    <td><input type="radio" name="selectedItem" value="item2"></td>
-                </tr>
-                <!-- Additional rows for more items -->
+            	<tbody id="dutchAuctionItem">
+               
             </tbody>
         </table>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Buy Now</button>
-            </div>
+            <form>
+ 				<button type="button" class="btn btn-primary" id="submitButton">Buy Now</button>
         </form>
+        </div>
     </div>
 
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+    // Retrieve itemName from the session
+    var itemName = localStorage.getItem("keyword");
+    
+    $.ajax({
+        url: "http://localhost:8080/auction/itemdetails",
+        type: 'GET',
+        success: function(response) {
+            // Print out itemName, auctionType, and startingBidPrice
+            $("#dutchAuctionItem").append("<tr><td>" + response.itemName + 
+                    "</td><td>" + response.itemDescription + "</td><td>" +
+                    response.shipmentPrice + "</td><td>" +
+                    response.startingBidPrice + "</td><td>" +
+                    response.auctionType + "</td>");
+            localStorage.setItem("biddingPrice", response.startingBidPrice);
+            },
+                    
+        error: function(xhr, status, error) {
+            console.error('AJAX Request Failed:', xhr, status, error);
+            alert('AJAX Request failed: ' + error);
+        }
+    });
+    $("#submitButton").on("click", function() {
+        submit();
+    });
+});
+
+function submit(){
+	
+	var price = localStorage.getItem("biddingPrice");
+	console.log(price);
+	$.ajax({
+        url: "http://localhost:8080/auction/dutchauction/" + price,
+        type: 'POST',
+        contentType: 'application/json',
+        success: function(response) {
+            		
+			window.location.href = "/auctionendedjsp/";
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Request Failed:', xhr, status, error);
+            alert('AJAX Request failed: ' + error);
+        }
+    });
+	
+}
+    
+</script>
+ 
 </body>
 </html>

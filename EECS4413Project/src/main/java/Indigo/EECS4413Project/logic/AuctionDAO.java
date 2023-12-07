@@ -31,26 +31,25 @@ public class AuctionDAO {
 	}
 	
 	//Add for several products later using hashmap
-	public String settingDutchBid(int id, int bidAmount) {
-		context.setAttribute("highestDutchBidder", id);
+	public void settingDutchBid(int bidAmount) {
+		context.setAttribute("highestDutchBidder", session.getAttribute("ID"));
 		context.setAttribute("dutchBidAmount", bidAmount);
-		return "bid submitted";
 	}
 	
-	public String settingForwardBid(int id, int bidAmount) {
+	public void settingForwardBid(int bidAmount) {
 		if(context.getAttribute("forwardBidAmount") == null) {
-			context.setAttribute("highestForwardBidder", id);
+			context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
 			context.setAttribute("forwardBidAmount", bidAmount);
 		
 		}
 		else if(bidAmount > (int) context.getAttribute("forwardBidAmount")) {
-		context.setAttribute("highestForwardBidder", id);
+		context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
 		context.setAttribute("forwardBidAmount", bidAmount);
 		}
 		else {
-			return "error";
-		}
-		return "bid submitted";
+			System.out.println("ERROR!!!");
+			}
+
 	}
 
 }
