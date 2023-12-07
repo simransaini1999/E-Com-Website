@@ -1,5 +1,7 @@
 package Indigo.EECS4413Project.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +36,13 @@ public class AuctionController {
 	public void doForwardAuction(@PathVariable int bidAmount) {
 		auctionDAO.settingForwardBid(bidAmount);
 	}
+	
+	@GetMapping(value = "/forwardauction/getbidder", produces = MediaType.APPLICATION_JSON)
+	public ArrayList<Integer> getAuctionDetails() {
+
+		return auctionDAO.getHighestBidderAndBid();
+	}
+	
 
 	
 	
