@@ -22,7 +22,7 @@
                     <th>Auction Type</th>
                 </tr>
             </thead>
-            	<tbody id="dutchAuctionItem">
+            <tbody id="dutchAuctionItem">
                
             </tbody>
         </table>

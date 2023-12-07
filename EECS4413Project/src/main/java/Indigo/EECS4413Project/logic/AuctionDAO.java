@@ -1,5 +1,7 @@
 package Indigo.EECS4413Project.logic;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +41,7 @@ public class AuctionDAO {
 	public void settingForwardBid(int bidAmount) {
 		if(context.getAttribute("forwardBidAmount") == null) {
 			context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
-			context.setAttribute("forwardBidAmount", bidAmount);
-		
+			context.setAttribute("forwardBidAmount", bidAmount);	
 		}
 		else if(bidAmount > (int) context.getAttribute("forwardBidAmount")) {
 		context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
@@ -51,5 +52,21 @@ public class AuctionDAO {
 			}
 
 	}
+	
+	public ArrayList<Integer> getHighestBidderAndBid(){
+		ArrayList<Integer> array = new ArrayList<Integer>();
+		if(context.getAttribute("ID") == null) {
+			array.add(0);
+			System.out.println("DOne1");
+		}else {
+		array.add((int) context.getAttribute("highestForwardBidder"));
+		System.out.println("DOne1");
+		array.add((int) context.getAttribute("forwardBidAmount"));
+		System.out.println("Done2");
+	}
+		return array;
+	}
+	
+	
 
 }
