@@ -25,5 +25,9 @@
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Clear localStorage on page load
+        localStorage.clear();
+    </script>
 </body>
 </html>

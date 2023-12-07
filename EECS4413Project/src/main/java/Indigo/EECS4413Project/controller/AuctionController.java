@@ -38,7 +38,7 @@ public class AuctionController {
 	}
 	
 	@GetMapping(value = "/forwardauction/getbidder", produces = MediaType.APPLICATION_JSON)
-	public ArrayList<Integer> getAuctionDetails() {
+	public int getAuctionDetails() {
 
 		return auctionDAO.getHighestBidderAndBid();
 	}
