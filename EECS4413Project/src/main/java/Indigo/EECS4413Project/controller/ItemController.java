@@ -41,8 +41,6 @@ public class ItemController {
 	
 	@PostMapping(value = "/selectitem/{itemName}", produces = MediaType.APPLICATION_JSON)
 	public void chooseItem(@PathVariable String itemName) {
-		System.out.println("Hellos");
-		System.out.println(itemName);
 		itemDAO.selectItem(itemName);
 	}
 	

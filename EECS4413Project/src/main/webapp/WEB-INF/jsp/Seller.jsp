@@ -1,40 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Selling Item</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Sign-Up Page</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="#">
 </head>
+
 <body>
+<form id="sellerForm">
 	<div class="container">
 		<h1 class="text-center">Selling Your Item</h1>
-		<form action="upload_item.jsp" method="post">
 			<div class="form-group">
-				<label class="control-label" for="itemDescription">Item
+				<label class="control-label" for="itemName">Item
 					Name</label>
-				<textarea name="itemName" class="form-control" rows="1"
-					placeholder="Enter item name" required></textarea>
+				<input type="text" name="itemName" class="form-control" 
+					placeholder="Enter item name" required></input>
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="itemDescription">Item
 					Description</label>
-				<textarea name="itemDescription" class="form-control" rows="3"
-					placeholder="Enter item description" required></textarea>
+				<input type="text" name="itemDescription" class="form-control" 
+					placeholder="Enter item description" required></input>
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="auctionType">Auction Type</label>
 				<select name="auctionType" class="form-control" required>
-					<option value="Dutch">--Select--</option>
-					<option value="Dutch">Dutch Auction</option>
-					<option value="Forward">Forward Auction</option>
+					<option value="select">--Select--</option>
+					<option value="Dutch Auction">Dutch Auction</option>
+					<option value="Forward Auction">Forward Auction</option>
 				</select>
 			</div>
 			<div class="form-group">
-				<label class="control-label" for="auctionDuration">Auction
-					Duration (in days)</label> <input type="number" name="auctionDuration"
-					class="form-control" min="1" placeholder="Enter auction duration"
+				<label class="control-label" for="expeditedShipmentPrice">Expedited Shipment Price ($)
+				</label> <input type="number" name="expeditedShipmentPrice"
+					class="form-control" min="1" placeholder="Enter Expedited Shipment Price"
+					required>
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="shipmentPrice">Shipment Price ($)
+				</label> <input type="number" name="shipmentPrice"
+					class="form-control" min="1" placeholder="Enter Shipment Price"
 					required>
 			</div>
 			<div class="form-group">
@@ -46,10 +56,46 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Upload Item</button>
 			</div>
-		</form>
 	</div>
+	</form>
+	
+	<script>
+    $("#sellerForm").on('submit', function(e) {
+        e.preventDefault();
+        // Capture form data
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
+        
+		var userData = {
+				itemName: $('input[name="itemName"]').val(),
+				itemDescription: $('input[name="itemDescription"]').val(),
+				auctionType: $('select[name="auctionType"]').val(),
+				expeditedShipmentPrice: $('input[name="expeditedShipmentPrice"]').val(),
+				shipmentPrice: $('input[name="shipmentPrice"]').val(),
+				startingBidPrice: $('input[name="startingBidPrice"]').val()
+			};
+        
+        $.ajax({
+            url: "http://localhost:8080/seller/createitem", 
+			type: 'POST',
+
+			contentType: 'application/json',
+
+			data: JSON.stringify(userData),
+			
+			 success: function(response) {
+				 alert('item added successfully');
+                 window.location.href = "/";
+             },
+             error: function(xhr, status, error) {
+                 alert('item failed to add: ' + error);
+                 // You might also want to log the details to the console for debugging
+                 console.error('XHR Status:', status);
+                 console.error('Error:', error);
+             }
+        });
+    });
+
+</script>
+	
 </body>
 </html>

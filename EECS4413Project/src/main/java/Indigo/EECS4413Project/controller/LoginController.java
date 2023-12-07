@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -26,14 +27,9 @@ public class LoginController {
 		return loginDAO.read(username, password);
 
 	}
-	@PatchMapping(value = "/{username}/{newPassword}",produces = MediaType.APPLICATION_JSON)
-    public ResponseEntity<String> updatePassword(@PathVariable String username, @PathVariable String newPassword) {
-        try {
+	@PostMapping(value = "/{username}/{newPassword}",produces = MediaType.APPLICATION_JSON)
+    public void updatePassword(@PathVariable String username, @PathVariable String newPassword) {
             loginDAO.update(username, newPassword);
             System.out.println(username + newPassword);
-            return ResponseEntity.ok("Password updated successfully.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating password.");
-        }
-    }
+	}
 }

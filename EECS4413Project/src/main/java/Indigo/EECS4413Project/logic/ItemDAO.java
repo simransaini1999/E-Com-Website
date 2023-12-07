@@ -26,6 +26,7 @@ public class ItemDAO  {
 	public void selectItem(String itemName) {
 		session.setAttribute("itemName", itemName);
 		
+		
 	}
 	public void create(Item item) {
 		Item item1 = new Item();

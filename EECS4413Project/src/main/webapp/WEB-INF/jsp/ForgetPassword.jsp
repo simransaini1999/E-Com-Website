@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <form action="">
+    <form id = "forgotPasswordForm">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <button type="reset" class="btn btn-primary">Reset</button>
-                            <a href="Login.jsp" class="btn btn-secondary">Login Instead</a>
+                            <a href="/loginjsp/" class="btn btn-secondary">Login Instead</a>
                         </div>
                     </div>
                 </div>
@@ -39,5 +39,34 @@
         </div>
     </form>
 
+<script>
+	
+	$("#forgotPasswordForm").on('reset', function(e) {
+        e.preventDefault();
+	
+	var username = $('input[name="username"]').val(); 
+	var password = $('input[name="newPassword"]').val();
+	
+	$.ajax({
+        url: "http://localhost:8080/login/" + username + "/" + password, 
+		type: 'POST',
+		 success: function(response) {
+             console.log(response);
+			
+             window.location.href = "/loginjsp/";
+			
+         },
+         error: function(xhr, status, error) {
+             alert('Registration failed: ' + error);
+             // You might also want to log the details to the console for debugging
+             console.error('XHR Status:', status);
+             console.error('Error:', error);
+         }
+    });
+});
+	
+	
+		
+	</script>
 </body>
 </html>
