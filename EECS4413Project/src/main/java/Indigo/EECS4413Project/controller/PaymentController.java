@@ -28,8 +28,9 @@ public class PaymentController {
 
 	@GetMapping("/user/{auctionType}")
 	public User Payment(@PathVariable String auctionType){
-		
+		System.out.println(auctionType);
 		if(auctionType.equals("Forward Auction")) {
+			System.out.println("Forward of payment");
 			return paymentDAO.getForwardUser();
 		}
 		return paymentDAO.getDutchUser();

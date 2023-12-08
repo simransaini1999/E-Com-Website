@@ -21,36 +21,33 @@
 		<form action="process_payment.jsp" method="post">
 			<div class="form-group">
 				<label class="control-label">First Name</label>
-				 <p class="text-left"> Sheldon </p>
+				 <p class="text-left" id="firstName"> </p>
 			</div>
 			<div class="form-group">
 				<label class="control-label">Last Name</label>
-				<p class="text-left"> Cooper </p>
+				<p class="text-left" id="lastName"> Cooper </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Street Number</label>
-				<p class="text-left"> 345 </p>
+		    <label class="control-label">Street Number</label>
+		    <p class="text-left" id="streetNumber"> 345 </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Street Name</label>
-				<p class="text-left"> William Street </p>
+			    <label class="control-label">Street Name</label>
+			    <p class="text-left" id="streetName"> William Street </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Province</label>
-				<p class="text-left"> Alberta </p>
+			    <label class="control-label">City</label>
+			    <p class="text-left" id="city"> Edmonton </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">City</label>
-				<p class="text-left"> Edmonton </p>
+			    <label class="control-label">Country</label>
+			    <p class="text-left" id="country"> Canada </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Country</label>
-				<p class="text-left"> Canada </p>
+			    <label class="control-label">Total Cost ($) </label>
+			    <p class="text-left" id="totalCost"> $123.00 </p>
 			</div>
-			<div class="form-group">
-				<label class="control-label">Total Cost ($) </label>
-				<p class="text-left"> $123.00 </p>
-			</div>
+
 			<div class="form-group">
 				<label class="control-label" for="creditCardNumber">Credit
 					Card Number</label> <input type="text" name="creditCardNumber"
@@ -78,26 +75,24 @@
 		</form>
 	</div>
 <script>
-        function storeKeyword(event) {
-            event.preventDefault();
-            var keyword = $('input[name="keyword"]').val();
+$(document).ready(function(){
+ 
+            
 			var auctionType = localStorage.getItem("auctionType");
+			var bidPrice = localStorage.getItem("BidPrice");
             $.ajax({
-                url: "http://localhost:8080/payment/user" + auctionType, 
+            	url: "http://localhost:8080/payment/user/" + auctionType, 
                 type: 'GET',
-                data: { keyword: keyword },
                 success: function(response) {
-                    console.log("Keyword stored successfully");
-                    console.log(response.username);
-
-                    // Store keyword in session (client-side)
-                    localStorage.setItem("keyword", keyword);
-                    localStorage.setItem("itemDescription",response.itemDescription);
-                    localStorage.setItem("shipmentPrice", response.shipmentPrice);
-                    localStorage.setItem("auctionType", response.auctionType);
-                    localStorage.setItem("StartingBidPrice", response.startingBidPrice);
-                    localStorage.setItem("ExpeditedShipmentPrice", response.expeditedShipmentPrice);
-					
+                    console.log(response.fName);
+                    $('#firstName').text(response.fName);
+                    $('#lastName').text(response.lName); 
+                    $('#streetNumber').text(response.streetNumber);
+                    $('#streetName').text(response.streetName);
+                    $('#city').text(response.city);
+                    $('#country').text(response.country);
+                    $('#totalCost').text(bidPrice);
+                    
                     // Redirect to the destination page
                     //window.location.href = "/itemfoundjsp/";
                 },
@@ -107,7 +102,7 @@
                     console.error('Error:', error);
                 }
             });
-        }
+});
     </script>
 </body>
 </html>
