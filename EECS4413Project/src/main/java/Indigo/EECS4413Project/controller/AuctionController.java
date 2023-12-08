@@ -1,5 +1,7 @@
 package Indigo.EECS4413Project.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,15 +27,22 @@ public class AuctionController {
 		return auctionDAO.itemDetails();
 	}
 	
-	@PostMapping(value = "/dutchauction/{id}/{bidAmount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-	public String doDutchAuction(@PathVariable int id,@PathVariable int bidAmount) {
-			return auctionDAO.settingDutchBid(id, bidAmount);
+	@PostMapping(value = "/dutchauction/{bidAmount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	public void doDutchAuction(@PathVariable int bidAmount) {
+		auctionDAO.settingDutchBid(bidAmount);
 	}
 	
-	@PostMapping(value = "/forwardauction/{id}/{bidAmount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-	public String doForwardAuction(@PathVariable int id,@PathVariable int bidAmount) {
-			return auctionDAO.settingForwardBid(id, bidAmount);
+	@PostMapping(value = "/forwardauction/{bidAmount}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+	public void doForwardAuction(@PathVariable int bidAmount) {
+		auctionDAO.settingForwardBid(bidAmount);
 	}
+	
+	@GetMapping(value = "/forwardauction/getbidder", produces = MediaType.APPLICATION_JSON)
+	public int getAuctionDetails() {
+
+		return auctionDAO.getHighestBidderAndBid();
+	}
+	
 
 	
 	

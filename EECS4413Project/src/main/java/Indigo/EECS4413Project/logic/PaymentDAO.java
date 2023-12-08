@@ -45,6 +45,20 @@ public class PaymentDAO {
 	public int getForwardBidPrice() {
 		return (int) context.getAttribute("forwardBidAmount");
 	}
+
+	public boolean authenticateBidder(String auctionType) {
+		
+		if(auctionType.equals("Forward Auction") && session.getAttribute("ID") == context.getAttribute("highestForwardBidder")) {
+			System.out.println("Session " +(int) session.getAttribute("ID"));
+			System.out.println("Context " + (int)context.getAttribute("highestForwardBidder"));
+			System.out.println("TRUE");
+			return true;
+		}else if(auctionType.equals("Dutch Auction") && session.getAttribute("ID") == context.getAttribute("highestDutchBidder")){
+			
+		}
+		System.out.println("FALSE");
+		return false;
+	}
 	
 	
 	

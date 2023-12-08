@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title> Forward Auction Bidding</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="#">
 </head>
-<body>
+
+<body onload = "refresh()">
     <div class="container">
         <h1 class="text-center">Forward Auction Items</h1>
         <table class="table table-bordered">
@@ -18,44 +22,123 @@
                     <th>Highest Bidding Price</th>
                     <th>Highest Bidder</th>
                     <th>Auction Type</th>
-                    <th>Remaining Time</th>
-                    <th>New Bidding Price</th>
-                    <th>Select to Bid</th>
+                    
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Item 1</td>
-                    <td>Description of Item 1</td>
-                    <td>$25.00</td>
-                    <td>$100.00</td>
-                    <td>ID: 123</td>
-                    <td>Forward Auction</td>
-                    <td>2 days 4 hours 15 minutes 10 seconds</td>
-                    <td><input type="number" name="newBidPrice" min="101" placeholder="Enter new bid"></td>
-                    <td><input type="radio" name="selectedItem" value="item1"></td>
-                </tr>
-                <tr>
-                    <td>Item 2</td>
-                    <td>Description of Item 2</td>
-                    <td>$15.00</td>
-                    <td>$75.00</td>
-                    <td>ID: 897</td>
-                    <td>Forward Auction</td>
-                    <td>1 day 12 hours 30 minutes 5 seconds</td>
-                    <td><input type="number" name="newBidPrice" min="76" placeholder="Enter new bid"></td>
-                    <td><input type="radio" name="selectedItem" value="item2"></td>
-                </tr>
+           <tbody id="forwardAuctionItem">
+
                 <!-- Additional rows for more items -->
             </tbody>
         </table>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Bid</button>
-            </div>
-        </form>
+            <form>
+    
+        <label for="bidInput">Enter Bid Amount:</label>
+        <input type="text" name="bidInput" class="form-control" placeholder="Enter bid amount">
+    
+    <button type="button" class="btn btn-primary" id="submitButton">Buy Now</button>
+</form>
+
+        </div>
     </div>
 
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+    // Retrieve itemName from the session
+    var counter = localStorage.getItem("counter");
+    var itemName = localStorage.getItem("keyword");
+    var itemDescription = localStorage.getItem("itemDescription");
+    var shipmentPrice = localStorage.getItem("shipmentPrice");
+    var auctionType = localStorage.getItem("auctionType");
+    var bidPrice;
+    
+    if(counter == 0){
+        bidPrice = localStorage.getItem("StartingBidPrice");
+        
+    }
+    else{
+        bidPrice = localStorage.getItem("BidPrice");
+    }
+    console.log("Bid price", bidPrice);
+    
+    var expeditedShipmentPrice = localStorage.getItem("ExpeditedShipmentPrice");
+
+    
+    $.ajax({
+        url: "http://localhost:8080/auction/forwardauction/getbidder",
+        type: 'GET',
+        success: function(response) {
+            
+			var highestBidder = response
+			localStorage.setItem("Highestbidder", highestBidder);
+
+            // Print out itemName, auctionType, and startingBidPrice
+            $("#forwardAuctionItem").append("<tr><td>" + itemName +
+                "</td><td>" + itemDescription + "</td><td>" +
+                shipmentPrice + "</td><td>" +
+                bidPrice + "</td><td>" +
+                highestBidder + "</td><td>" +
+                auctionType + "</td></tr>");
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Request Failed:', xhr, status, error);
+            alert('AJAX Request failed: ' + error);
+        }
+    });
+    
+        
+    $("#submitButton").on("click", function() {
+        // Retrieve the bid input value here
+        var bid = $('input[name="bidInput"]').val();
+
+        // Store the bid value in the localStorage with the key "BidPrice"
+        checkBid = localStorage.getItem("BidPrice");
+        if(bid<checkBid){
+        	counter--;
+        	alert('Enter a bid higher than current bid');
+        }else{
+        	
+        localStorage.setItem("BidPrice", bid);
+        }
+        console.log("Bid entered:", bid);
+        
+        submit();
+    });
+});
+
+function submit(){
+    var bid = localStorage.getItem("BidPrice");
+    var counter = localStorage.getItem("counter");
+    console.log("Bid in local storage ", bid);
+    $.ajax({
+        url: "http://localhost:8080/auction/forwardauction/" + bid,
+        type: 'POST',
+        contentType: 'application/json',
+        success: function(response) {
+            console.log("response is ",response);
+            if(counter == 1){
+                window.location.href = "/auctionendedjsp/";
+            } else {
+                console.log(counter);
+                counter++;
+                localStorage.setItem("counter", counter);
+                console.log(counter);
+                window.location.href = "/ForwardAuctionjsp/";
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Request Failed:', xhr, status, error);
+            alert('AJAX Request failed: ' + error);
+        }
+    });
+}
+
+function refresh(){
+	setInterval(function () {
+        location.reload(true); // Reload the page, forcing cache refresh
+    }, 10000);
+}
+</script>
+
 </body>
 </html>

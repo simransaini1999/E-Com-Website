@@ -1,7 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Item Search</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Payment</title>
@@ -70,8 +77,37 @@
 			</div>
 		</form>
 	</div>
+<script>
+        function storeKeyword(event) {
+            event.preventDefault();
+            var keyword = $('input[name="keyword"]').val();
+			var auctionType = localStorage.getItem("auctionType");
+            $.ajax({
+                url: "http://localhost:8080/payment/user" + auctionType, 
+                type: 'GET',
+                data: { keyword: keyword },
+                success: function(response) {
+                    console.log("Keyword stored successfully");
+                    console.log(response.username);
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
+                    // Store keyword in session (client-side)
+                    localStorage.setItem("keyword", keyword);
+                    localStorage.setItem("itemDescription",response.itemDescription);
+                    localStorage.setItem("shipmentPrice", response.shipmentPrice);
+                    localStorage.setItem("auctionType", response.auctionType);
+                    localStorage.setItem("StartingBidPrice", response.startingBidPrice);
+                    localStorage.setItem("ExpeditedShipmentPrice", response.expeditedShipmentPrice);
+					
+                    // Redirect to the destination page
+                    //window.location.href = "/itemfoundjsp/";
+                },
+                error: function(xhr, status, error) {
+                    alert('Failed to store keyword: ' + error);
+                    console.error('XHR Status:', status);
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
 </body>
 </html>

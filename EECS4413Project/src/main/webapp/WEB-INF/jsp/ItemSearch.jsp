@@ -46,7 +46,13 @@
 
                     // Store keyword in session (client-side)
                     localStorage.setItem("keyword", keyword);
-
+                    localStorage.setItem("itemDescription",response.itemDescription);
+                    localStorage.setItem("shipmentPrice", response.shipmentPrice);
+                    localStorage.setItem("auctionType", response.auctionType);
+                    localStorage.setItem("StartingBidPrice", response.startingBidPrice);
+                    localStorage.setItem("ExpeditedShipmentPrice", response.expeditedShipmentPrice);
+					var counter = 0;
+					localStorage.setItem("counter", counter);
                     // Redirect to the destination page
                     window.location.href = "/itemfoundjsp/";
                 },
