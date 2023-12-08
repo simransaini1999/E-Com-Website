@@ -66,11 +66,7 @@
         <version>1.2</version> <!-- JSTL version -->
     </dependency>
 
-    <dependency>
-    	<groupId>org.yorku</groupId>
-    	<artifactId>StudentInformationSystem</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
+    
 	</dependencies>
 
 	<build>
