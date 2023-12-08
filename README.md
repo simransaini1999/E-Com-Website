@@ -28,6 +28,9 @@ The steps required to run our project are as followed:<br>
 
 10- checkForwardPayement 
 
+11- createItem Copy
+
+12- createUser Copy
 
 Addition commands that can be tested
 get_All_items , delete_items ,updateUser
@@ -76,3 +79,7 @@ Otherwise, in the URL enter the name of the file.
 For example, if I was to run the “Register.jsp” page, my URL would look something like this: http://localhost:8080/EECS4413Project/Register.jsp (http://localhost:8080/EECS4413Project/Register.jsp) 
 
 For each of the .jsp pages, you would do the same thing as the Register.jsp shown above.
+
+
+**For Docker**
+To access the project using docker, the link provided can be used. Search the project up from this link and then pull all the commits. simransaini1999 / docker-springboot-app

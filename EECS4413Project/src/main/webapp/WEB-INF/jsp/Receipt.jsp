@@ -41,7 +41,7 @@
 </div>
 <div class="form-group">
     <label class="control-label">Total Paid ($) </label>
-    <p class="text-left" id="totalPaid"> $123.00 </p>
+    <p class="text-left" id="totalCost"> $123.00 </p>
 </div>
 <div class="form-group">
     <label class="control-label">Item Name </label>
