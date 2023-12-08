@@ -1,53 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Receipt Page</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
 	<div class="container">
 		<h1 class="text-center">Receipt</h1>
 		<p class="text-center">Thank you for your payment!</p>
-		<form action="process_payment.jsp" method="post">
+		<form>
 			<div class="form-group">
-				<label class="control-label">First Name</label>
-				<p class="text-left"> Sheldon </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Last Name</label>
-				<p class="text-left"> Cooper </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Street Number</label>
-				<p class="text-left"> 345 </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Street Name</label>
-				<p class="text-left"> William Street </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Province</label>
-				<p class="text-left"> Alberta </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">City</label>
-				<p class="text-left"> Edmonton </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Country</label>
-				<p class="text-left"> Canada </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Total Paid ($) </label>
-				<p class="text-left"> $123.00 </p>
-			</div>
-			<div class="form-group">
-				<label class="control-label">Item ID </label>
-				<p class="text-left"> 897 </p>
-			</div>
+				
+    <label class="control-label">First Name</label>
+    <p class="text-left" id="firstName"> Sheldon </p>
+</div>
+<div class="form-group">
+    <label class="control-label">Last Name</label>
+    <p class="text-left" id="lastName"> Cooper </p>
+</div>
+<div class="form-group">
+    <label class="control-label">Street Number</label>
+    <p class="text-left" id="streetNumber"> 345 </p>
+</div>
+<div class="form-group">
+    <label class="control-label">Street Name</label>
+    <p class="text-left" id="streetName"> William Street </p>
+</div>
+<div class="form-group">
+    <label class="control-label">City</label>
+    <p class="text-left" id="city"> Edmonton </p>
+</div>
+<div class="form-group">
+    <label class="control-label">Country</label>
+    <p class="text-left" id="country"> Canada </p>
+</div>
+<div class="form-group">
+    <label class="control-label">Total Paid ($) </label>
+    <p class="text-left" id="totalPaid"> $123.00 </p>
+</div>
+<div class="form-group">
+    <label class="control-label">Item Name </label>
+    <p class="text-left" id="itemName"> 897 </p>
+</div>
+
 			
 			<h4 class="text-left">Shipping Details</h4>
 			<p class="text-left">The item will be shipped in... </p>
@@ -55,12 +55,35 @@
 				<p class="text-left"> 25 days </p>
 			</div>
 			<div class="btn-group">
-            <a href="ItemCatalog.jsp" class="btn btn-primary">Back to Main Page</a>
+            <a href="/" class="btn btn-primary">Back to Main Page</a>
         </div>
 		</form>
 	</div>
+<script>
+    $(document).ready(function(){
+        // Retrieve values from localStorage
+        var firstName = localStorage.getItem("fName");
+        var lastName = localStorage.getItem("lName");
+        var streetNumber = localStorage.getItem("streetNumber");
+        var streetName = localStorage.getItem("streetName");
+        var city = localStorage.getItem("city");
+        var country = localStorage.getItem("country");
+        var bidPrice = localStorage.getItem("BidPrice");
+        var itemName = localStorage.getItem("keyword");
+        
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
+        $('#firstName').text(firstName);
+        $('#lastName').text(lastName); 
+        $('#streetNumber').text(streetNumber);
+        $('#streetName').text(streetName);
+        $('#city').text(city);
+        $('#country').text(country);
+        $('#totalCost').text(bidPrice);
+        $("#itemName").text(itemName);
+
+    });
+</script>
+
+	
 </body>
 </html>

@@ -1,7 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Item Search</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Payment</title>
@@ -14,36 +21,33 @@
 		<form action="process_payment.jsp" method="post">
 			<div class="form-group">
 				<label class="control-label">First Name</label>
-				 <p class="text-left"> Sheldon </p>
+				 <p class="text-left" id="firstName"> </p>
 			</div>
 			<div class="form-group">
 				<label class="control-label">Last Name</label>
-				<p class="text-left"> Cooper </p>
+				<p class="text-left" id="lastName"> Cooper </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Street Number</label>
-				<p class="text-left"> 345 </p>
+		    <label class="control-label">Street Number</label>
+		    <p class="text-left" id="streetNumber"> 345 </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Street Name</label>
-				<p class="text-left"> William Street </p>
+			    <label class="control-label">Street Name</label>
+			    <p class="text-left" id="streetName"> William Street </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Province</label>
-				<p class="text-left"> Alberta </p>
+			    <label class="control-label">City</label>
+			    <p class="text-left" id="city"> Edmonton </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">City</label>
-				<p class="text-left"> Edmonton </p>
+			    <label class="control-label">Country</label>
+			    <p class="text-left" id="country"> Canada </p>
 			</div>
 			<div class="form-group">
-				<label class="control-label">Country</label>
-				<p class="text-left"> Canada </p>
+			    <label class="control-label">Total Cost ($) </label>
+			    <p class="text-left" id="totalCost"> $123.00 </p>
 			</div>
-			<div class="form-group">
-				<label class="control-label">Total Cost ($) </label>
-				<p class="text-left"> $123.00 </p>
-			</div>
+
 			<div class="form-group">
 				<label class="control-label" for="creditCardNumber">Credit
 					Card Number</label> <input type="text" name="creditCardNumber"
@@ -66,12 +70,50 @@
 					placeholder="Enter security code" required>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="button" class="btn btn-primary" id = "submitButton">Submit</button>
 			</div>
 		</form>
 	</div>
-
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+ 
+            
+			var auctionType = localStorage.getItem("auctionType");
+			var bidPrice = localStorage.getItem("BidPrice");
+            $.ajax({
+            	url: "http://localhost:8080/payment/user/" + auctionType, 
+                type: 'GET',
+                success: function(response) {
+                    console.log(response.fName);
+                    localStorage.setItem("fName", response.fName);
+                    localStorage.setItem("lName",response.lName);
+                    localStorage.setItem("streetNumber",response.streetNumber);
+                    localStorage.setItem("streetName",response.streetName);
+                    localStorage.setItem("city",response.city);
+                    localStorage.setItem("country",response.country);
+                    $('#firstName').text(response.fName);
+                    $('#lastName').text(response.lName); 
+                    $('#streetNumber').text(response.streetNumber);
+                    $('#streetName').text(response.streetName);
+                    $('#city').text(response.city);
+                    $('#country').text(response.country);
+                    $('#totalCost').text(bidPrice);
+                    
+                    
+                   
+                },
+                error: function(xhr, status, error) {
+                    alert('Failed to store keyword: ' + error);
+                    console.error('XHR Status:', status);
+                    console.error('Error:', error);
+                }
+            });
+            $("#submitButton").on("click", function() {
+            	
+            	window.location.href = "/receipt/";
+                
+            });
+});
+    </script>
 </body>
 </html>

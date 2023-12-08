@@ -1,13 +1,17 @@
 package Indigo.EECS4413Project.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Indigo.EECS4413Project.logic.HistoryDAO;
 import Indigo.EECS4413Project.logic.PaymentDAO;
+import Indigo.EECS4413Project.model.History;
 import Indigo.EECS4413Project.model.Item;
 import Indigo.EECS4413Project.model.User;
 
@@ -17,24 +21,30 @@ import Indigo.EECS4413Project.model.User;
 public class PaymentController {
 
 	@Autowired
-	private PaymentDAO paymentDAO; 
+	PaymentDAO paymentDAO; 
+	
+	@Autowired
+	HistoryDAO historyDAO;
 
-	@GetMapping("/forwardauction")
-	public String forwardPayment(){
-		Item item = paymentDAO.getItem();
-		int price = paymentDAO.getForwardBidPrice();
-		User user = paymentDAO.getForwardUser();
+	@GetMapping("/user/{auctionType}")
+	public User Payment(@PathVariable String auctionType){
+		System.out.println(auctionType);
+		if(auctionType.equals("Forward Auction")) {
+			System.out.println("Forward of payment");
+			return paymentDAO.getForwardUser();
+		}
+		return paymentDAO.getDutchUser();
 		
-		return "Item : " + item.getItemName() + "\nprice : " + price + "\nuser : " + user.getUsername()+ "\nForward Auction Item";
 	}
 	
-	@GetMapping("/dutchauction")
-	public String dutchPayment(){
-		Item item = paymentDAO.getItem();
-		int price = paymentDAO.getForwardBidPrice();
-		User user = paymentDAO.getForwardUser();
-		
-		return "Item : " + item.getItemName() + "\nprice : " + price + "\nuser : " + user.getUsername() + "\nDutch Auction Item";
+	@GetMapping("/checkBidder/{auctionType}")
+	public boolean checkBidderID(@PathVariable String auctionType) {
+		return paymentDAO.authenticateBidder(auctionType);
+	}
+	
+	@GetMapping("/gethistory")
+	public List<History> getAllHistory(){
+		return historyDAO.readAll();
 	}
 
 }

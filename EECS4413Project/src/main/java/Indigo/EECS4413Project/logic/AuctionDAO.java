@@ -1,10 +1,13 @@
 package Indigo.EECS4413Project.logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import Indigo.EECS4413Project.model.History;
 import Indigo.EECS4413Project.model.Item;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +24,11 @@ public class AuctionDAO {
 	
 	@Autowired
 	ServletContext context;
+	
+	@Autowired
+	HistoryDAO historyDAO;
+	
+	
  	
 	public Item itemDetails() {
 
@@ -35,37 +43,62 @@ public class AuctionDAO {
 	//Add for several products later using hashmap
 	public void settingDutchBid(int bidAmount) {
 		context.setAttribute("highestDutchBidder", session.getAttribute("ID"));
+		System.out.println("Dutch bidder is "+session.getAttribute("ID"));
+		System.out.println("Dutch bidder context is "+context.getAttribute("highestDutchBidder"));
 		context.setAttribute("dutchBidAmount", bidAmount);
 	}
 	
 	public void settingForwardBid(int bidAmount) {
-		if(context.getAttribute("forwardBidAmount") == null) {
-			context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
-			context.setAttribute("forwardBidAmount", bidAmount);	
-		}
-		else if(bidAmount > (int) context.getAttribute("forwardBidAmount")) {
-		context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
-		context.setAttribute("forwardBidAmount", bidAmount);
-		}
-		else {
-			System.out.println("ERROR!!!");
-			}
+	    // History history = new History(); // Remove this line
 
+	    if (context.getAttribute("forwardBidAmount") == null) {
+	        context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
+	        context.setAttribute("forwardBidAmount", bidAmount);
+
+	        History history = new History();
+	        history.setBidderID((int) context.getAttribute("highestForwardBidder"));
+	        history.setBidAmount((int) context.getAttribute("forwardBidAmount"));
+	        historyDAO.create(history);
+
+	        System.out.println(context.getAttribute("highestForwardBidder"));
+	    } else if (bidAmount > (int) context.getAttribute("forwardBidAmount")) {
+	        System.out.println("Old bid amount is: " + context.getAttribute("forwardBidAmount"));
+	        context.setAttribute("highestForwardBidder", session.getAttribute("ID"));
+	        context.setAttribute("forwardBidAmount", bidAmount);
+
+	        History history = new History();
+	        history.setBidderID((int) context.getAttribute("highestForwardBidder"));
+	        history.setBidAmount((int) context.getAttribute("forwardBidAmount"));
+	        historyDAO.create(history);
+
+	        System.out.println("New bid amount was: " + bidAmount);
+	        System.out.println(context.getAttribute("highestForwardBidder"));
+	    } else {
+	        System.out.println("ERROR: Bid amount not greater than current bid!");
+	    }
+	}
+
+	
+	public int getHighestBidderAndBid(){
+		
+		if(context.getAttribute("highestDutchBidder") == null) {
+			return 0;
+			
+		}
+		return (int) context.getAttribute("highestDutchBidder");
 	}
 	
-	public ArrayList<Integer> getHighestBidderAndBid(){
-		ArrayList<Integer> array = new ArrayList<Integer>();
-		if(context.getAttribute("ID") == null) {
-			array.add(0);
-			System.out.println("DOne1");
-		}else {
-		array.add((int) context.getAttribute("highestForwardBidder"));
-		System.out.println("DOne1");
-		array.add((int) context.getAttribute("forwardBidAmount"));
-		System.out.println("Done2");
-	}
-		return array;
-	}
+	public int getHighestBidder(){
+			
+			if(context.getAttribute("highestDutchBidder") == null) {
+				System.out.println("Dutch bidder context22222 is "+context.getAttribute("highestDutchBidder"));
+				return 0;
+				
+			}
+			System.out.println("Dutch bidder context34242 is "+context.getAttribute("highestDutchBidder"));
+	
+			return (int) context.getAttribute("highestDutchBidder");
+		}
 	
 	
 

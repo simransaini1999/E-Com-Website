@@ -23,5 +23,11 @@ CREATE TABLE items (
     expeditedShipmentPrice INTEGER
 );
 
+CREATE TABLE history(
+	ID INTEGER AUTO_INCREMENT PRIMARY KEY,
+	bidderID INTEGER,
+	bidAmount INTEGER
+);
+
 
 

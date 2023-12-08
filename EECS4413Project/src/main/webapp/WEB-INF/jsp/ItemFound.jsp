@@ -22,12 +22,12 @@
                 </tr>
             </thead>
             <tbody id="itemTableBody">
-               
+              
             </tbody>
         </table>
         <div class="text-center">
             <form>
-            	<button type="button" class="btn btn-primary" onclick="Bid()">Bid</button>
+            	<button type="button" class="btn btn-primary" id = "bidButton">Bid</button>
             
                 <button type="button" class="btn btn-secondary" onclick="goBack()">Go Back</button>
             	
@@ -47,9 +47,10 @@ $(document).ready(function(){
             // Print out itemName, auctionType, and startingBidPrice
             $("#itemTableBody").append("<tr><td>" + response.itemName + 
                     "</td><td>" + response.startingBidPrice + "</td><td>" + 
-                    response.auctionType + "</td>" +
-                    // Add radio button in a new column
-                    "<td><input type='radio' name='bidSelection'></td></tr>");
+                    response.auctionType + 
+                    "</td><td><input type='radio' name='bidSelection' id = 'bidSelection'></td></tr>"
+                    
+);
             localStorage.setItem("auction", response.auctionType);
         },
         error: function(xhr, status, error) {
@@ -58,7 +59,14 @@ $(document).ready(function(){
         }
     });
     $("#bidButton").on("click", function() {
-        Bid();
+    	var isRadioSelected = document.getElementById('bidSelection').checked;
+
+        if (isRadioSelected) {
+        	Bid();
+        } else {
+            alert('seelct a product');
+        }
+        
     });
 });
 function Bid() {
