@@ -70,7 +70,7 @@
 					placeholder="Enter security code" required>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="button" class="btn btn-primary" id = "submitButton">Submit</button>
 			</div>
 		</form>
 	</div>
@@ -85,6 +85,12 @@ $(document).ready(function(){
                 type: 'GET',
                 success: function(response) {
                     console.log(response.fName);
+                    localStorage.setItem("fName", response.fName);
+                    localStorage.setItem("lName",response.lName);
+                    localStorage.setItem("streetNumber",response.streetNumber);
+                    localStorage.setItem("streetName",response.streetName);
+                    localStorage.setItem("city",response.city);
+                    localStorage.setItem("country",response.country);
                     $('#firstName').text(response.fName);
                     $('#lastName').text(response.lName); 
                     $('#streetNumber').text(response.streetNumber);
@@ -93,14 +99,19 @@ $(document).ready(function(){
                     $('#country').text(response.country);
                     $('#totalCost').text(bidPrice);
                     
-                    // Redirect to the destination page
-                    //window.location.href = "/itemfoundjsp/";
+                    
+                   
                 },
                 error: function(xhr, status, error) {
                     alert('Failed to store keyword: ' + error);
                     console.error('XHR Status:', status);
                     console.error('Error:', error);
                 }
+            });
+            $("#submitButton").on("click", function() {
+            	
+            	window.location.href = "/receipt/";
+                
             });
 });
     </script>
