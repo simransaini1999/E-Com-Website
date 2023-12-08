@@ -89,7 +89,7 @@ public class AuctionDAO {
 	}
 	
 	public int getHighestBidder(){
-			
+			System.out.println("HELLO");
 			if(context.getAttribute("highestDutchBidder") == null) {
 				System.out.println("Dutch bidder context22222 is "+context.getAttribute("highestDutchBidder"));
 				return 0;

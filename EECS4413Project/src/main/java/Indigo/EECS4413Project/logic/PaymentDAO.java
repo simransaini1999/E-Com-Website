@@ -17,6 +17,8 @@ public class PaymentDAO {
 	
 	@Autowired
 	ItemDAO itemDAO;
+	@Autowired
+	AuctionDAO AuctionDAO;
 	
 	@Autowired
 	HttpSession session;
@@ -49,12 +51,10 @@ public class PaymentDAO {
 	public boolean authenticateBidder(String auctionType) {
 		
 		if(auctionType.equals("Forward Auction") && session.getAttribute("ID") == context.getAttribute("highestForwardBidder")) {
-			System.out.println("Session " +(int) session.getAttribute("ID"));
-			System.out.println("Context " + (int)context.getAttribute("highestForwardBidder"));
-			System.out.println("TRUE");
+			Item item = AuctionDAO.itemDetails();
 			return true;
 		}else if(auctionType.equals("Dutch Auction") && session.getAttribute("ID") == context.getAttribute("highestDutchBidder")){
-			
+			return true;
 		}
 		System.out.println("FALSE");
 		return false;
