@@ -58,9 +58,9 @@ Add path variable <br>
 Add path variable <br>
 8- /auction/forwardauction/{id}/{bidAmount}
 
-9- /payement/dutchauction
+9- /payment/dutchauction
 
-10- /payement/forwardauction
+10- /payment/forwardauction
 
 
 
