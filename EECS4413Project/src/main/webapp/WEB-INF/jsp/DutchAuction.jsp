@@ -60,27 +60,12 @@ $(document).ready(function(){
     });
     $("#submitButton").on("click", function() {
     	console.log('hello');
-    	$.ajax({
-            url: "http://localhost:8080/auction/dutchauction/getbidder",
-            type: 'GET',
-            success: function(response) {
-                
-    			var highestBidder = response
-    			localStorage.setItem("Highestbidder", highestBidder);
-
-                
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Request Failed:', xhr, status, error);
-                alert('AJAX Request failed: ' + error);
-            }
-        });
+    	
         submit();
     });
 });
 
 function submit(){
-	
 	var price = localStorage.getItem("BidPrice");
 	console.log(price);
 	$.ajax({
@@ -88,14 +73,31 @@ function submit(){
         type: 'POST',
         contentType: 'application/json',
         success: function(response) {
-            		
-			window.location.href = "/auctionendedjsp/";
+        	$.ajax({
+                url: "http://localhost:8080/auction/dutchauction/getbidder",
+                type: 'GET',
+                success: function(response) {
+                    
+        			var highestBidder = response
+        			localStorage.setItem("Highestbidder", highestBidder);
+        			window.location.href = "/auctionendedjsp/";
+        			
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Request Failed:', xhr, status, error);
+                    alert('AJAX Request failed: ' + error);
+                }
+            });
+			
         },
         error: function(xhr, status, error) {
             console.error('AJAX Request Failed:', xhr, status, error);
             alert('AJAX Request failed: ' + error);
         }
     });
+	
+	
+	
 	
 }
     
