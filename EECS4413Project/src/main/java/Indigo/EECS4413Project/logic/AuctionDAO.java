@@ -43,6 +43,8 @@ public class AuctionDAO {
 	//Add for several products later using hashmap
 	public void settingDutchBid(int bidAmount) {
 		context.setAttribute("highestDutchBidder", session.getAttribute("ID"));
+		System.out.println("Dutch bidder is "+session.getAttribute("ID"));
+		System.out.println("Dutch bidder context is "+context.getAttribute("highestDutchBidder"));
 		context.setAttribute("dutchBidAmount", bidAmount);
 	}
 	
@@ -79,12 +81,24 @@ public class AuctionDAO {
 	
 	public int getHighestBidderAndBid(){
 		
-		if(context.getAttribute("highestForwardBidder") == null) {
+		if(context.getAttribute("highestDutchBidder") == null) {
 			return 0;
 			
 		}
-		return (int) context.getAttribute("highestForwardBidder");
+		return (int) context.getAttribute("highestDutchBidder");
 	}
+	
+	public int getHighestBidder(){
+			
+			if(context.getAttribute("highestDutchBidder") == null) {
+				System.out.println("Dutch bidder context22222 is "+context.getAttribute("highestDutchBidder"));
+				return 0;
+				
+			}
+			System.out.println("Dutch bidder context34242 is "+context.getAttribute("highestDutchBidder"));
+	
+			return (int) context.getAttribute("highestDutchBidder");
+		}
 	
 	
 
