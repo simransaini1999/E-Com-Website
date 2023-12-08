@@ -42,6 +42,11 @@ public class AuctionController {
 
 		return auctionDAO.getHighestBidderAndBid();
 	}
+	@GetMapping(value = "/dutchauction/getbidder", produces = MediaType.APPLICATION_JSON)
+	public int getAuctionDetails1() {
+
+		return auctionDAO.getHighestBidder();
+	}
 	
 
 	
