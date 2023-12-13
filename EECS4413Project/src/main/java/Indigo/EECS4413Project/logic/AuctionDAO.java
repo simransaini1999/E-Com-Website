@@ -102,11 +102,11 @@ public class AuctionDAO {
 	
 	public int getHighestBidderAndBid(){
 		
-		if(context.getAttribute("highestDutchBidder") == null) {
+		if(context.getAttribute("highestForwardBidder") == null) {
 			return 0;
 			
 		}
-		return (int) context.getAttribute("highestDutchBidder");
+		return (int) context.getAttribute("highestForwardBidder");
 	}
 	
 	public int getHighestBidder(){
